@@ -6,6 +6,5 @@ Running 10 AM Friday, March 19th until 10 AM on Monday the 22nd (PST)
 
 Contributors:
 Dev: AvatarK0
-Dev:
 Art: lustart
 Music: MonkeyBurner
