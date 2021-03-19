@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private CanvasControler canvasControler=default;
+
     [SerializeField] private Rigidbody2D rigBody=default;
     [SerializeField] private float moveSpeedX=default;
     [SerializeField] private float moveSpeedY=default;
@@ -33,5 +35,10 @@ public class Player : MonoBehaviour
             pos.x+=moveSpeedX*Time.deltaTime;
             transform.position=pos;
         }
+    }
+
+    private void OnDestroy()
+    {
+        canvasControler.GameOver();
     }
 }
