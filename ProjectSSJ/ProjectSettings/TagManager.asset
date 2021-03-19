@@ -41,3 +41,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: FarBackground
+    uniqueID: 819845247
+    locked: 0
+  - name: Background
+    uniqueID: 2030317661
+    locked: 0
+  - name: PowerUp
+    uniqueID: 1708564907
+    locked: 0
+  - name: Player
+    uniqueID: 1930006315
+    locked: 0
+  - name: Platforms
+    uniqueID: 869161289
+    locked: 0
+  - name: Floor
+    uniqueID: 2544832891
+    locked: 0
+  - name: Walls
+    uniqueID: 2726921493
+    locked: 0
+  - name: Foreground
+    uniqueID: 3307372061
+    locked: 0
