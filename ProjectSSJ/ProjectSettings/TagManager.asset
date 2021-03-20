@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Scenary
+  - PlayerButt
+  - AudioManager
+  - Bug
   layers:
   - Default
   - TransparentFX

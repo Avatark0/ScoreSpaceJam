@@ -5,17 +5,18 @@ using UnityEngine;
 public class WallParent : MonoBehaviour
 {
     [Header("GameObject prefab")]
-    [SerializeField] private GameObject wallPair = default;
+    [SerializeField] private GameObject wallPairPrefab = default;
     [SerializeField] private GameObject floor = default;
 
-    [SerializeField] private float verticalWallOffset = default;
+    [SerializeField] private float wallOffset = default;
+    [SerializeField] private float cameraOffset = default;
 
-    [SerializeField] private GameObject generatedWalls_older;
-    [SerializeField] private GameObject generatedWalls_newer;
+    [SerializeField] private GameObject wallPair_older;
+    [SerializeField] private GameObject wallPair_newer;
 
     private void Update()
     {
-        if(floor.transform.position.y - generatedWalls_older.transform.position.y > verticalWallOffset)
+        if(floor.transform.position.y - wallPair_older.transform.position.y > wallOffset - cameraOffset)
         {
             GenerateWalls();
         }
@@ -23,14 +24,14 @@ public class WallParent : MonoBehaviour
 
     private void GenerateWalls()
     {
-        float posY = floor.transform.position.y + verticalWallOffset;
+        float posY = wallPair_newer.transform.position.y + wallOffset;
         Vector3 pos = new Vector3(0, posY, 0);
 
-        GameObject generatedWalls_toDestroy = generatedWalls_older;
+        GameObject wallPair_toDestroy = wallPair_older;
 
-        generatedWalls_older = generatedWalls_newer;
-        generatedWalls_newer = Instantiate(wallPair, pos, Quaternion.identity, transform);
+        wallPair_older = wallPair_newer;
+        wallPair_newer = Instantiate(wallPairPrefab, pos, Quaternion.identity, transform);
 
-        Destroy(generatedWalls_toDestroy);
+        Destroy(wallPair_toDestroy);
     }
 }

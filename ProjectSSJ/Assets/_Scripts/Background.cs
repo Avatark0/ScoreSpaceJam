@@ -16,7 +16,7 @@ public class Background : MonoBehaviour
 
     private void Update()
     {
-        if(floor.transform.position.y - background_older.transform.position.y > backgroundOffset)
+        if(floor.transform.position.y - background_older.transform.position.y > backgroundOffset - screenOffset)
         {
             GenerateWalls();
         }
@@ -24,7 +24,7 @@ public class Background : MonoBehaviour
 
     private void GenerateWalls()
     {
-        float posY = floor.transform.position.y + backgroundOffset + screenOffset;
+        float posY = background_newer.transform.position.y + backgroundOffset;
         Vector3 pos = new Vector3(0, posY, 0);
 
         GameObject background_toDestroy = background_older;
