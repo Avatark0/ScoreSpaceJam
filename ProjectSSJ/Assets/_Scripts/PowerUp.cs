@@ -30,16 +30,15 @@ public class PowerUp : MonoBehaviour
         if(!inButt)
         {
             transform.parent = playerButt.transform;
-            
-            //rigBody.isKinematic = true;
-            //rigBody.velocity = Vector2.zero;
-            //rigBody.angularVelocity = 0;
 
             Destroy(rigBody);
             rigBody = playerButt.GetComponentInParent<Rigidbody2D>();
 
             gameObject.tag = "PlayerButt";
             inButt = true;
+
+            playerButt.GetComponent<PlayerButt>().AddBug(gameObject.name);
+            Debug.Log(gameObject.name);
         }
     }
 

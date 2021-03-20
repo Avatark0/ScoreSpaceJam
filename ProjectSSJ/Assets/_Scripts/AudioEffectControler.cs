@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AudioEffectControler : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public AudioClip clip; //make sure you assign an actual clip here in the inspector
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //AudioSource.PlayClipAtPoint(clip, new Vector3(5, 1, 2));
     }
 }

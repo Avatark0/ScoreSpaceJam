@@ -48,7 +48,21 @@ public class PowerUpParent : MonoBehaviour
         Vector3 pos = new Vector3(posX, posY, 0);
 
         int i = Random.Range(0,3);
+        
         GameObject powerUp = Instantiate(powerUpPrefabs[i], pos, Quaternion.identity, transform);
         powerUp.GetComponent<PowerUp>().SetPlayerObj(playerButt);
+
+        switch(i)
+        {
+            case 0:
+                powerUp.name = "Firefly";
+                break;
+            case 1:
+                powerUp.name = "Cricket";
+                break;
+            case 2:
+                powerUp.name = "Bee";
+                break;
+        }
     }
 }
