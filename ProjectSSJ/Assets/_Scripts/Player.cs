@@ -11,19 +11,18 @@ public class Player : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
+        
         if(Input.GetKey(KeyCode.W))
         {
-            //pos.y+=moveSpeedY*Time.deltaTime;
-            //transform.position=pos;
-
             Vector2 force = Vector2.zero;
             force.y += moveSpeedY * Time.deltaTime;
             rigBody.AddForce(force);
         }
         if(Input.GetKey(KeyCode.S))
         {
-            //pos.y-=moveSpeedY*Time.deltaTime;
-            //transform.position=pos;
+            Vector2 force = Vector2.zero;
+            force.y -= moveSpeedY * Time.deltaTime * 0.5f;
+            rigBody.AddForce(force);
         }
         if(Input.GetKey(KeyCode.A))
         {

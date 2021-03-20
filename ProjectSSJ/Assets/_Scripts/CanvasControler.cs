@@ -37,7 +37,9 @@ public class CanvasControler : MonoBehaviour
 
     public void GameRestart()
     {
-        SceneManager.LoadScene("Main");
+        string _name;
+        _name = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(_name);
     }
 
     public void Pause()

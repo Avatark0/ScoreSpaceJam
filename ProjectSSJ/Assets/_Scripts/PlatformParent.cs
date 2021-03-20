@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Platform : MonoBehaviour
+public class PlatformParent : MonoBehaviour
 {
     [SerializeField] private GameObject platform = default;
     [SerializeField] private GameObject floor = default;
@@ -17,12 +17,12 @@ public class Platform : MonoBehaviour
     {
         if(floor.transform.position.y - lastPlatformPos > verticalPlatformOffset)
         {
-            CreatePlatform();
+            GeneratePlatform();
             lastPlatformPos=floor.transform.position.y;
         }
     }
 
-    private void CreatePlatform()
+    private void GeneratePlatform()
     {
         float posX = Random.Range(limitLeft,limitRight);
         float posY = floor.transform.position.y + verticalRoofOffset;
