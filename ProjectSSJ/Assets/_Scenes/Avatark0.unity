@@ -1716,7 +1716,7 @@ Transform:
   m_GameObject: {fileID: 1277899332}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 10, z: 0}
-  m_LocalScale: {x: 16, y: 30, z: 1}
+  m_LocalScale: {x: 16, y: 50, z: 1}
   m_Children:
   - {fileID: 1914184367}
   - {fileID: 293194308}
@@ -1738,6 +1738,7 @@ MonoBehaviour:
   backgroundPrefab: {fileID: 71586992984661394, guid: 0b69c5bdda43fdb43903f0e23d0884fa, type: 3}
   floor: {fileID: 1784012393}
   backgroundOffset: 30
+  screenOffset: 1
   background_older: {fileID: 1914184366}
   background_newer: {fileID: 293194309}
 --- !u!1 &1342582149
