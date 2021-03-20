@@ -2043,10 +2043,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2199482583269852404, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199482583269852404, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -2240,30 +2236,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2924656391954651684, guid: 35db96fb08a8bb54f93f02ffbe2391ce, type: 3}
   m_PrefabInstance: {fileID: 1868620417}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1306008718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2367618938170504393, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
-  m_PrefabInstance: {fileID: 1054703803}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1306008721
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306008718}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 918fe781df0ba154aae93d31d39b15fb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1369071518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2924656391954651684, guid: 35db96fb08a8bb54f93f02ffbe2391ce, type: 3}
@@ -2385,18 +2357,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1780337177}
     m_Modifications:
-    - target: {fileID: 71586992984661388, guid: 0b69c5bdda43fdb43903f0e23d0884fa, type: 3}
-      propertyPath: m_Color.b
-      value: 0.79379874
-      objectReference: {fileID: 0}
-    - target: {fileID: 71586992984661388, guid: 0b69c5bdda43fdb43903f0e23d0884fa, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 71586992984661388, guid: 0b69c5bdda43fdb43903f0e23d0884fa, type: 3}
-      propertyPath: m_Color.r
-      value: 0.7882353
-      objectReference: {fileID: 0}
     - target: {fileID: 71586992984661394, guid: 0b69c5bdda43fdb43903f0e23d0884fa, type: 3}
       propertyPath: m_Name
       value: Background_older
