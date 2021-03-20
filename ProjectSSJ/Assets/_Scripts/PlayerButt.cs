@@ -14,6 +14,16 @@ public class PlayerButt : MonoBehaviour
 
     private bool increase = true;
 
+    public void RestartValues()
+    {
+        if(fireflyAudio==null)
+            fireflyAudio=GameObject.Find("Audio-Firefly").GetComponent<AudioSourcePrefab>();
+        if(cricketAudio==null)
+            cricketAudio=GameObject.Find("Audio-Cricket").GetComponent<AudioSourcePrefab>();
+        if(beeAudio==null)
+            beeAudio=GameObject.Find("Audio-Bee").GetComponent<AudioSourcePrefab>();
+    }
+
     public void AddBug(string bugType)
     {
         switch(bugType)

@@ -38,7 +38,6 @@ public class PowerUp : MonoBehaviour
             inButt = true;
 
             playerButt.GetComponent<PlayerButt>().AddBug(gameObject.name);
-            Debug.Log(gameObject.name);
         }
     }
 

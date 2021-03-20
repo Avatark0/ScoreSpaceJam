@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private CanvasControler canvasControler = default;
+    [SerializeField] private AudioManager audioManager = default;
 
     [SerializeField] private Rigidbody2D rigBody=default;
     [SerializeField] private float moveSpeedX=default;
@@ -42,6 +43,10 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(audioManager==null)
+            audioManager=GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager.ResetChildrenValues();
+
         canvasControler.GameOver();
     }
 }

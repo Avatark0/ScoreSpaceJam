@@ -11,18 +11,14 @@ public class AudioSourcePrefab : MonoBehaviour
     
     private void OnEnable() 
     {
-        audioSource=GetComponent<AudioSource>();
-        ResetValues();  
-    }
-
-    private void Awake()
-    {
-        audioSource=GetComponent<AudioSource>();
         ResetValues();  
     }
 
     public void ResetValues()
     {
+        if(audioSource==null)
+            audioSource=GetComponent<AudioSource>();
+
         if(gameObject.name == "Audio-Main")
             audioSource.volume = 1;
         else
@@ -31,6 +27,9 @@ public class AudioSourcePrefab : MonoBehaviour
 
     public void TrackVolumeControl(bool increase)
     {
+        if(audioSource==null)
+            audioSource=GetComponent<AudioSource>();
+        
         if(increase)
             audioSource.volume+=increment;
         else

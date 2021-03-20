@@ -54,7 +54,5 @@ public class CanvasControler : MonoBehaviour
             Time.timeScale=1;
             paused=false;
         }
-        
-        Debug.Log("Time.timeScale = "+Time.timeScale);
     }
 }

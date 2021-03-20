@@ -14,4 +14,12 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
     }
+
+    public void ResetChildrenValues()
+    {
+        foreach(Transform child in transform)
+        {
+            child.GetComponent<AudioSourcePrefab>().ResetValues();
+        }
+    }
 }

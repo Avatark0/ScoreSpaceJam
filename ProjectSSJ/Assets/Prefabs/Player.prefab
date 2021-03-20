@@ -275,9 +275,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasControler: {fileID: 0}
+  audioManager: {fileID: 0}
   rigBody: {fileID: 1136920509506325189}
   moveSpeedX: 8
-  moveSpeedY: 3000
+  moveSpeedY: 2500
 --- !u!1 &2367618938170504393
 GameObject:
   m_ObjectHideFlags: 0
