@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 7043874070886097285}
   - component: {fileID: 712128862506349737}
   - component: {fileID: 8202419484030539281}
-  - component: {fileID: 507933295065903947}
-  - component: {fileID: -6210004690249281720}
   m_Layer: 0
   m_Name: Firefly
   m_TagString: Bug
@@ -65,7 +63,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -88,35 +86,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerButt: {fileID: 0}
   rigBody: {fileID: 712128862506349737}
---- !u!114 &507933295065903947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505960407752374225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9449d200f96ade748b14f47fa9f4268e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 3144815075390136847, guid: 4d213e1baa4586646abfdbdd7cf29d26, type: 3}
-  bulletParent: {fileID: 0}
---- !u!114 &-6210004690249281720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505960407752374225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fd2a85f7b0bf8d49888254e31b30746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickedUp: {fileID: 8300000, guid: 22b05b3af0cee0e458cbcf320aef857b, type: 3}
-  dying: {fileID: 8300000, guid: ef256e2a23135f940ad77ed879e87344, type: 3}
-  shooting: {fileID: 8300000, guid: aa153ce7a9f1a8f4f8f38426c210a64a, type: 3}
 --- !u!1 &1788621572969088218
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,17 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D rigBody=default;
     [SerializeField] private float moveSpeedX=default;
     [SerializeField] private float moveSpeedY=default;
-    
-    [SerializeField] private GameObject bullet = default;
-    [SerializeField] private GameObject bulletParent = default;
 
     void Update()
-    {
-        Movement();
-        Shoot();
-    }
-
-    private void Movement()
     {
         Vector3 pos = transform.position;
 
@@ -47,14 +38,6 @@ public class Player : MonoBehaviour
             transform.position=pos;
 
             rigBody.velocity = new Vector2(0, rigBody.velocity.y);
-        }
-    }
-
-    private void Shoot()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(bullet, transform.position, Quaternion.identity, bulletParent.transform);
         }
     }
 
