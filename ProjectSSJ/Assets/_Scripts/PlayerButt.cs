@@ -49,6 +49,8 @@ public class PlayerButt : MonoBehaviour
                 break;
             }
         }
+
+        Score.PlayerBugs(fireflys, crickets, bees);
     }
 
     public void RemoveBug(string bugType)
@@ -76,5 +78,7 @@ public class PlayerButt : MonoBehaviour
                 break;
             }
         }
+
+        Score.PlayerBugs(fireflys, crickets, bees);
     }
 }

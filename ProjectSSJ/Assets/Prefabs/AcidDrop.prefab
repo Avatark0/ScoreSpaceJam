@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5986323757727279841}
   m_Layer: 0
   m_Name: AcidDrop
-  m_TagString: Untagged
+  m_TagString: AcidDrop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

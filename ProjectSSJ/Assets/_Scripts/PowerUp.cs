@@ -14,7 +14,11 @@ public class PowerUp : MonoBehaviour
         if(other.gameObject.tag == "PlayerButt")
         {
             AttachToPlayerButt();
-        }  
+        }
+        else if(other.gameObject.tag == "AcidDrop")
+        {
+            Death();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -38,22 +42,21 @@ public class PowerUp : MonoBehaviour
             inButt = true;
 
             playerButt.GetComponent<PlayerButt>().AddBug(gameObject.name);
+
+            GetComponent<BugSoundEffects>().PickedUp();
         }
     }
 
-<<<<<<< Updated upstream
-=======
     public void Death()
     {
         GetComponent<BugSoundEffects>().Dying();
 
         if(inButt)
             playerButt.GetComponent<PlayerButt>().RemoveBug(gameObject.name);
-        
+
         Destroy(gameObject);
     }
 
->>>>>>> Stashed changes
     public void SetPlayerObj(GameObject _playerButt)
     {
         playerButt = _playerButt;
