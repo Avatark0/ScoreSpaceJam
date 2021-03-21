@@ -11,7 +11,8 @@ public class AcidDrop : MonoBehaviour
     {
         if(Random.Range(0,2) > 0)
         {
-            GetComponentInChildren<SpriteRenderer>().sprite = spriteType2;
+            //removed second acid shoot
+            //GetComponentInChildren<SpriteRenderer>().sprite = spriteType2;
         }
     }
 
