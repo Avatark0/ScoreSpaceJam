@@ -15,20 +15,20 @@ public class AcidDropParent : MonoBehaviour
     [SerializeField, Range(0,1)] private float spawnChance = default;
 
     [SerializeField] private float nextDifRamp = 100;
-    [SerializeField] private float difIncreaseTax = 2f;
+    [SerializeField] private float difIncreaseTax = 5f;
 
-    private float lastAcidDropPos = 0;
+    private float lastDropPos = 100;
     private float spawnChanceSum = 0;
     
     void Update()
     {
-        if(floor.transform.position.y - lastAcidDropPos > acidDropOffset)
+        if(floor.transform.position.y > acidDropOffset + lastDropPos)
         {
             spawnChanceSum+=Random.Range(0f,0.1f)*Time.deltaTime;
             if(spawnChanceSum>spawnChance)
             {
                 GenerateAcidDrop();
-                lastAcidDropPos=floor.transform.position.y;
+                lastDropPos=floor.transform.position.y;
                 spawnChanceSum = 0;
             }
         }

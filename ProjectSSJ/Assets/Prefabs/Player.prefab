@@ -126,7 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2199482583269852401}
-  - component: {fileID: 4912094562941840964}
+  - component: {fileID: 3942966278381451565}
   - component: {fileID: 1136920509506325189}
   - component: {fileID: 2199482583269852403}
   m_Layer: 0
@@ -155,8 +155,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &4912094562941840964
-PolygonCollider2D:
+--- !u!70 &3942966278381451565
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -168,24 +168,9 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.11532451, y: 1.4731687}
-      - {x: -0.07605986, y: 1.4753742}
-      - {x: -0.11439797, y: 0.44212177}
-      - {x: 0.0016787648, y: -0.9040919}
-      - {x: 0.13142616, y: -0.89458424}
-      - {x: 0.18095028, y: 0.4421219}
+  m_Offset: {x: 0.04, y: 0.43}
+  m_Size: {x: 0.35, y: 2.27}
+  m_Direction: 0
 --- !u!50 &1136920509506325189
 Rigidbody2D:
   serializedVersion: 4

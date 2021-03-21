@@ -8,11 +8,18 @@ public class PlayerButt : MonoBehaviour
     [SerializeField] private AudioSourcePrefab cricketAudio;
     [SerializeField] private AudioSourcePrefab beeAudio;
 
+    public List<PowerUp> bugs = new List<PowerUp>();
+
     public int fireflys;
     public int crickets;
     public int bees;
 
     private bool increase = true;
+
+    public void AglomerateBugs()
+    {
+        //bugs.add()
+    }
 
     public void RestartValues()
     {
@@ -24,9 +31,10 @@ public class PlayerButt : MonoBehaviour
             beeAudio=GameObject.Find("Audio-Bee").GetComponent<AudioSourcePrefab>();
     }
 
-    public void AddBug(string bugType)
+    public void AddBug(GameObject bug)
     {
-        switch(bugType)
+        bugs.Add(bug.GetComponent<PowerUp>());
+        switch(bug.name)
         {
             case "Firefly":
             {

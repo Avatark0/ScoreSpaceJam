@@ -1369,8 +1369,8 @@ MonoBehaviour:
   acidDropOffset: 1
   roofOffset: 27
   spawnChance: 0.01
-  nextDifRamp: 80
-  difIncreaseTax: 2
+  nextDifRamp: 150
+  difIncreaseTax: 5
 --- !u!4 &847731550
 Transform:
   m_ObjectHideFlags: 0

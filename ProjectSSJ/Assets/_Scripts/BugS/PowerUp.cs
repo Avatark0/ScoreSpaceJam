@@ -41,15 +41,15 @@ public class PowerUp : MonoBehaviour
             gameObject.tag = "PlayerButt";
             inButt = true;
 
-            playerButt.GetComponent<PlayerButt>().AddBug(gameObject.name);
+            playerButt.GetComponent<PlayerButt>().AddBug(gameObject);
 
-            GetComponent<BugSoundEffects>().PickedUp();
+            GetComponentInChildren<BugSoundEffects>().PickedUp();
         }
     }
 
     public void Death()
     {
-        GetComponent<BugSoundEffects>().Dying();
+        GetComponentInChildren<BugSoundEffects>().Dying();
 
         if(inButt)
             playerButt.GetComponent<PlayerButt>().RemoveBug(gameObject.name);
@@ -60,5 +60,10 @@ public class PowerUp : MonoBehaviour
     public void SetPlayerObj(GameObject _playerButt)
     {
         playerButt = _playerButt;
+    }
+
+    public string BugName()
+    {
+        return gameObject.name;
     }
 }
