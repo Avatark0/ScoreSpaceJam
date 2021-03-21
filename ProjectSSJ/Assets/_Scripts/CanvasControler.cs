@@ -9,6 +9,7 @@ public class CanvasControler : MonoBehaviour
     [SerializeField] private GameObject gameMenu = default;
     [SerializeField] private GameObject endMenu = default;
 
+    private static bool started;
     private static bool paused;
 
     private void Start()
@@ -25,6 +26,7 @@ public class CanvasControler : MonoBehaviour
         gameMenu.SetActive(true);
         endMenu.SetActive(false);
         Time.timeScale=1;
+        started=true;
     }
 
     public void GameOver()
@@ -33,6 +35,7 @@ public class CanvasControler : MonoBehaviour
         gameMenu.SetActive(false);
         endMenu.SetActive(true);
         Time.timeScale=0;
+        started=false;
     }
 
     public void GameRestart()
@@ -44,7 +47,7 @@ public class CanvasControler : MonoBehaviour
 
     public static void Pause()
     {
-        if(gameMenu.ActiveSelf)
+        if(started)
         {
             if(!paused)
             {
