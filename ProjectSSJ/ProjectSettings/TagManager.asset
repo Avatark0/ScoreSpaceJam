@@ -8,10 +8,6 @@ TagManager:
   - PlayerButt
   - AudioManager
   - Bug
-  - BulletParent
-  - Platform
-  - AcidDrop
-  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -69,9 +65,6 @@ TagManager:
     locked: 0
   - name: Walls
     uniqueID: 2726921493
-    locked: 0
-  - name: Bullet
-    uniqueID: 2553154969
     locked: 0
   - name: Foreground
     uniqueID: 3307372061
