@@ -18,22 +18,15 @@ public class PlatformParent : MonoBehaviour
 
     void Update()
     {
-        if(floor.transform.position.y - lastPlatformPos > platformOffset)
-        {
+        if(GlobalSpawner.IsTimeForPlatform()) {
             GeneratePlatform();
-            lastPlatformPos=floor.transform.position.y;
-        }
-
-        if(floor.transform.position.y > nextDifRamp)
-        {
-            platformOffset = platformOffset*difIncreaseTax;
-            nextDifRamp = nextDifRamp + 200;
         }
     }
 
     private void GeneratePlatform()
     {
-        float posX = Random.Range(limitLeft,limitRight);
+        float[] rands = GlobalSpawner.NextPlatform();
+        float posX = rands[0] * (limitRight-limitLeft) + limitLeft;
         float posY = floor.transform.position.y + roofOffset;
         Vector3 pos = new Vector3(posX, posY, 0);
 

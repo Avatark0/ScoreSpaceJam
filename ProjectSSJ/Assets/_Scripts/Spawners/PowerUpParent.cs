@@ -23,31 +23,19 @@ public class PowerUpParent : MonoBehaviour
     
     void Update()
     {
-        if(floor.transform.position.y - lastPowerUpPos > powerUpOffset)
-        {
-            spawnChanceSum+=Random.Range(0f,0.1f)*Time.deltaTime;
-            if(spawnChanceSum>spawnChance)
-            {
-                GeneratePowerUp();
-                lastPowerUpPos=floor.transform.position.y;
-                spawnChanceSum = 0;
-            }
-        }
-
-        if(floor.transform.position.y > nextSpawnRamp)
-        {
-            spawnChance = spawnChance*spawnIncreaseTax;
-            nextSpawnRamp = nextSpawnRamp + 200;
+        if (GlobalSpawner.IsTimeForBug()) {
+            GeneratePowerUp();
         }
     }
 
     private void GeneratePowerUp()
     {
-        float posX = Random.Range(limitLeft, limitRight);
+        float[] rands = GlobalSpawner.NextBug();
+        float posX = (limitRight-limitLeft)*rands[0] + limitLeft;
         float posY = floor.transform.position.y + roofOffset;
         Vector3 pos = new Vector3(posX, posY, 0);
 
-        int i = Random.Range(0,3);
+        int i = (int) Mathf.Floor(rands[1]*3);
         
         GameObject powerUp = Instantiate(powerUpPrefabs[i], pos, Quaternion.identity, transform);
         powerUp.GetComponent<PowerUp>().SetPlayerObj(playerButt);
