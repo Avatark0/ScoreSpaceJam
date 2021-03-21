@@ -51,8 +51,9 @@ public class PowerUp : MonoBehaviour
     {
         GetComponent<BugSoundEffects>().Dying();
 
-        playerButt.GetComponent<PlayerButt>().RemoveBug(gameObject.name);
-        
+        if(inButt)
+            playerButt.GetComponent<PlayerButt>().RemoveBug(gameObject.name);
+
         Destroy(gameObject);
     }
 

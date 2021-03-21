@@ -44,15 +44,15 @@ public class Bullet : MonoBehaviour
         {
             if(other.gameObject.tag=="Platform")
             {
-
+                other.gameObject.GetComponent<Platform>().Damage();
             }
             else if(other.gameObject.tag=="Bug")
             {
-
+                other.gameObject.GetComponent<PowerUp>().Death();
             }
             else if(other.gameObject.tag=="AcidDrop")
             {
-
+                other.gameObject.GetComponent<AcidDrop>().Death();
             }
 
             AudioSource.PlayClipAtPoint(hitSound, transform.position);

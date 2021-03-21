@@ -14,6 +14,9 @@ public class AcidDropParent : MonoBehaviour
     [SerializeField] private float roofOffset = default;
     [SerializeField, Range(0,1)] private float spawnChance = default;
 
+    [SerializeField] private float nextDifRamp = 100;
+    [SerializeField] private float difIncreaseTax = 2f;
+
     private float lastAcidDropPos = 0;
     private float spawnChanceSum = 0;
     
@@ -28,6 +31,12 @@ public class AcidDropParent : MonoBehaviour
                 lastAcidDropPos=floor.transform.position.y;
                 spawnChanceSum = 0;
             }
+        }
+
+        if(floor.transform.position.y > nextDifRamp)
+        {
+            spawnChance = spawnChance * difIncreaseTax;
+            nextDifRamp = nextDifRamp + 250;
         }
     }
 

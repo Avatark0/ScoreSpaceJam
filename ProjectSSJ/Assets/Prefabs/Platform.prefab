@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4647322450691954923}
   - component: {fileID: 4647322450691954922}
   - component: {fileID: 4553880099009181331}
+  - component: {fileID: 6396014447287732106}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -114,3 +115,15 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &6396014447287732106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647322450691954920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e882c483922d884eb220caaa05ad924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

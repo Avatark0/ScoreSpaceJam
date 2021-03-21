@@ -957,7 +957,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &668522586
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859627025}
+  - component: {fileID: 859627024}
+  m_Layer: 0
+  m_Name: AcidDropParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &859627024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -969,15 +980,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47fbfdc9debf5cc40a8bd97ccb232529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 4647322450691954920, guid: 658486ca8e3b43e439d51ebb074b3aeb, type: 3}
+  acidDropPrefab: {fileID: 7543880715492580143, guid: 9da5784a165afd44c89432009637fa31, type: 3}
   floor: {fileID: 1174850948}
-  limitLeft: -5
-  limitRight: 5
-  platformOffset: 12
+  limitLeft: -7
+  limitRight: 7
+  acidDropOffset: 1
   roofOffset: 27
+  spawnChance: 0.01
   nextDifRamp: 100
-  difIncreaseTax: 0.8
---- !u!4 &668522587
+  difIncreaseTax: 2
+--- !u!4 &859627025
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7349,12 +7361,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3203953958954607242, guid: 75a55e6e668a2f64eb589ce0b77cb2f0, type: 3}
   m_PrefabInstance: {fileID: 1756535837}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1756535839 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3203953958954607241, guid: 75a55e6e668a2f64eb589ce0b77cb2f0, type: 3}
-  m_PrefabInstance: {fileID: 1756535837}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1787955333
+  speed: 4
+  nextSpeedRamp: 100
+  speedIncreaseTax: 1.1
+--- !u!1 &1232792766
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
