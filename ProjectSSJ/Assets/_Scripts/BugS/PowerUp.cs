@@ -7,7 +7,12 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private GameObject playerButt = default;
     [SerializeField] private Rigidbody2D rigBody = default;
 
+    private float translationSpeed = 2;
     private bool inButt;
+    public bool translate;
+
+    private Vector3 finalPos = new Vector3();
+    private Vector3 translationVector = new Vector3();
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -29,6 +34,11 @@ public class PowerUp : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        TranslateToButt();
+    }
+
     public void AttachToPlayerButt()
     {
         if(!inButt)
@@ -41,9 +51,11 @@ public class PowerUp : MonoBehaviour
             gameObject.tag = "PlayerButt";
             inButt = true;
 
-            playerButt.GetComponent<PlayerButt>().AddBug(gameObject);
+            playerButt.GetComponent<PlayerButt>().CatchBug(gameObject);
 
             GetComponentInChildren<BugSoundEffects>().PickedUp();
+
+            StartTranslation();
         }
     }
 
@@ -52,9 +64,33 @@ public class PowerUp : MonoBehaviour
         GetComponentInChildren<BugSoundEffects>().Dying();
 
         if(inButt)
-            playerButt.GetComponent<PlayerButt>().RemoveBug(gameObject.name);
+            playerButt.GetComponent<PlayerButt>().LoseBug(gameObject);
 
         Destroy(gameObject);
+    }
+
+    private void TranslateToButt()
+    {
+        if(translate)
+        {
+            Vector3 ini = transform.position;
+            Vector3 end = playerButt.transform.position;
+
+            translationVector = (end - ini) * translationSpeed;
+
+            transform.Translate(translationVector * Time.deltaTime);
+
+            if(translationVector.magnitude < playerButt.GetComponent<PlayerButt>().GetProximityThereshold())
+            {
+                translate = false;
+                playerButt.GetComponent<PlayerButt>().IncreaseProximityThreshold();
+            }
+        }
+    }
+
+    private void StartTranslation()
+    {
+        translate = true;
     }
 
     public void SetPlayerObj(GameObject _playerButt)

@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class ShooterAim : MonoBehaviour
 {
-    public static Vector2 position;
-
-    private void Update() {
-        position = transform.position;
-    }
+    //To be deleted
 }

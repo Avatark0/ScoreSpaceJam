@@ -11,13 +11,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        Vector2 ini = ShooterAim.position;
-
-        Vector2 end;
-        end.x = transform.position.x;
-        end.y = transform.position.y;
-        
-        Vector2 direction = (end - ini).normalized;
+        Vector2 direction = Vector2.up;
         
         float force = baseForce * BugAmount();
         

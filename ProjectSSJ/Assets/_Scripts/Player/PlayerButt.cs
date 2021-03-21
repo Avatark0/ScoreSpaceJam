@@ -8,18 +8,17 @@ public class PlayerButt : MonoBehaviour
     [SerializeField] private AudioSourcePrefab cricketAudio;
     [SerializeField] private AudioSourcePrefab beeAudio;
 
-    public List<PowerUp> bugs = new List<PowerUp>();
+    [SerializeField] private float proximityThreshold = 1;
+
+    public List<GameObject> bugs = new List<GameObject>();
 
     public int fireflys;
     public int crickets;
     public int bees;
 
-    private bool increase = true;
-
-    public void AglomerateBugs()
-    {
-        //bugs.add()
-    }
+    public int totalFireflys;
+    public int totalCrickets;
+    public int totalBees;
 
     public void RestartValues()
     {
@@ -31,14 +30,34 @@ public class PlayerButt : MonoBehaviour
             beeAudio=GameObject.Find("Audio-Bee").GetComponent<AudioSourcePrefab>();
     }
 
-    public void AddBug(GameObject bug)
+    public void CatchBug(GameObject bug)
     {
-        bugs.Add(bug.GetComponent<PowerUp>());
-        switch(bug.name)
+        bugs.Add(bug);
+
+        AddBug(bug.name);
+
+        Score.PlayerBugs(fireflys, crickets, bees);
+    }
+
+    public void LoseBug(GameObject bug)
+    {
+        bugs.Remove(bug);
+
+        SubBug(bug.name);
+
+        Score.PlayerBugs(fireflys, crickets, bees);
+    }
+
+    private void AddBug(string bugName)
+    {
+        bool increase = true;
+
+        switch(bugName)
         {
             case "Firefly":
             {
                 fireflys++;
+                totalFireflys++;
                 fireflyAudio.TrackVolumeControl(increase);
                 break;
             }
@@ -46,6 +65,7 @@ public class PlayerButt : MonoBehaviour
             case "Cricket":
             {
                 crickets++;
+                totalCrickets++;
                 cricketAudio.TrackVolumeControl(increase);
                 break;
             }
@@ -53,40 +73,54 @@ public class PlayerButt : MonoBehaviour
             case "Bee":
             {
                 bees++;
+                totalBees++;
                 beeAudio.TrackVolumeControl(increase);
                 break;
             }
         }
-
-        Score.PlayerBugs(fireflys, crickets, bees);
     }
 
-    public void RemoveBug(string bugType)
+    private void SubBug(string bugName)
     {
-        switch(bugType)
+        bool increase = true;
+
+        switch(bugName)
         {
-            case "firefly":
+            case "Firefly":
             {
                 fireflys--;
                 fireflyAudio.TrackVolumeControl(!increase);
                 break;
             }
 
-            case "cricket":
+            case "Cricket":
             {
                 crickets--;
                 cricketAudio.TrackVolumeControl(!increase);
                 break;
             }
                 
-            case "bee":
+            case "Bee":
             {
                 bees--;
                 beeAudio.TrackVolumeControl(!increase);
                 break;
             }
         }
+    }
 
-        Score.PlayerBugs(fireflys, crickets, bees);
+    public void AglomerateBugs(GameObject bug)
+    {
+        //bug.GetComponent<PowerUp>().
+    }
+
+    public void IncreaseProximityThreshold()
+    {
+        proximityThreshold += (proximityThreshold + 1) / proximityThreshold;
+    }
+
+    public float GetProximityThereshold()
+    {
+        return proximityThreshold;
     }
 }

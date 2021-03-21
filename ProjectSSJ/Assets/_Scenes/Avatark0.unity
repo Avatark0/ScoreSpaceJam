@@ -6483,7 +6483,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1752153574}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerButt, Assembly-CSharp
         m_MethodName: RestartValues
         m_Mode: 1
@@ -7541,7 +7541,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2956146029675817635, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
       propertyPath: m_Name
-      value: ShooterAim
+      value: BugAmalgamation
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956146029675817635, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+      propertyPath: m_TagString
+      value: BugAmalgamation
       objectReference: {fileID: 0}
     - target: {fileID: 6872854171852922691, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7561,18 +7565,8 @@ PrefabInstance:
       objectReference: {fileID: 404646721}
     m_RemovedComponents:
     - {fileID: 7310016749684724090, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+    - {fileID: 8497293503033617812, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
---- !u!114 &1752153574 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8497293503033617812, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
-  m_PrefabInstance: {fileID: 1752153573}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752153575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d629f90037faf4c8efda14489ed446, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1752153575 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1617362653980311353, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
@@ -7602,6 +7596,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1752153582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752153575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baaf07e533ba19e47a86662c5f2cd271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireflyAudio: {fileID: 0}
+  cricketAudio: {fileID: 0}
+  beeAudio: {fileID: 0}
+  bugs: []
+  fireflys: 0
+  crickets: 0
+  bees: 0
+  totalFireflys: 0
+  totalCrickets: 0
+  totalBees: 0
 --- !u!1 &1828985612
 GameObject:
   m_ObjectHideFlags: 0
@@ -7851,7 +7867,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1752153574}
+      - m_Target: {fileID: 1752153582}
         m_TargetAssemblyTypeName: PlayerButt, Assembly-CSharp
         m_MethodName: RestartValues
         m_Mode: 1
