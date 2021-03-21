@@ -43,6 +43,7 @@ public class CanvasControler : MonoBehaviour
         string _name;
         _name = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(_name);
+        GlobalSpawner.ReInitLevel();
     }
 
     public static void Pause()

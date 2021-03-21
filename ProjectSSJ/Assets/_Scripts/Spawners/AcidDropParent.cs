@@ -22,31 +22,19 @@ public class AcidDropParent : MonoBehaviour
     
     void Update()
     {
-        if(floor.transform.position.y > acidDropOffset + lastDropPos)
-        {
-            spawnChanceSum+=Random.Range(0f,0.1f)*Time.deltaTime;
-            if(spawnChanceSum>spawnChance)
-            {
-                GenerateAcidDrop();
-                lastDropPos=floor.transform.position.y;
-                spawnChanceSum = 0;
-            }
-        }
-
-        if(floor.transform.position.y > nextDifRamp)
-        {
-            spawnChance = spawnChance * difIncreaseTax;
-            nextDifRamp = nextDifRamp + 250;
+        if(GlobalSpawner.IsTimeForDrop()) {
+            GenerateAcidDrop();
         }
     }
 
     private void GenerateAcidDrop()
     {
-        float posX = Random.Range(limitLeft, limitRight);
+        float[] rands = GlobalSpawner.NextDrop();
+        float posX = (limitRight-limitLeft)*rands[0] + limitLeft;
         float posY = floor.transform.position.y + roofOffset;
         Vector3 pos = new Vector3(posX, posY, 0);
 
-        int i = Random.Range(0,3);
+        int i = (int)Mathf.Floor(rands[1] * 3);
         Instantiate(acidDropPrefab, pos, Quaternion.identity, transform);
     }
 }
