@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6210004690249281720, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
+      propertyPath: pickedUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 23f0b73b115b21d4aa026c588c6e3c2c, type: 3}
+    - target: {fileID: -6210004690249281720, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
+      propertyPath: shooting
+      value: 
+      objectReference: {fileID: 8300000, guid: e0aae468f7084af43bf4dfb1b951a342, type: 3}
     - target: {fileID: 505960407752374224, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -141,15 +149,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376585172507411686, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7376585172507411686, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7376585172507411686, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7698930487374999214, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
       propertyPath: m_Sprite

@@ -6,15 +6,18 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     [SerializeField] private GameObject floor = default;
-    [SerializeField] private GameObject player = default;
-
+    
     [SerializeField] private Text text = default;
+
+    private static int playerBugs = 0;
+    private static float playerScore = 0;
 
     private int score = 0;
 
     void Update()
     {   
-        score = FloorScore() + PlayerScore();
+        playerScore += playerBugs*Time.deltaTime;
+        score = FloorScore() + (int)playerScore;
         text.text = score.ToString();
     }
 
@@ -28,9 +31,14 @@ public class Score : MonoBehaviour
         return floorScore;
     }
 
-    private int PlayerScore()
+    public static void PlayerBugs(int nFlys, int nCric, int nBees)
     {
-        int playerScore = (int)player.transform.position.y;
-        return 0;
+        playerBugs = nFlys*nFlys + nCric + nBees;
+    }
+
+    public static void ResetStaticValues()
+    {
+        playerBugs = 0;
+        playerScore = 0;
     }
 }
