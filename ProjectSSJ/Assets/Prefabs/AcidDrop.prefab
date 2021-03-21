@@ -175,3 +175,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be27e24151afc224fbc0b9a0b5d3e442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splash: {fileID: 8300000, guid: 6284345633692e6459cb7c5c5cffe26d, type: 3}
+  spriteType2: {fileID: 21300000, guid: e62b77bc4da813a42a92e85f7c76b5e9, type: 3}

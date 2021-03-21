@@ -822,6 +822,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 607710910}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -836,6 +837,20 @@ MonoBehaviour:
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
 --- !u!114 &607710912
+=======
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859627025}
+  - component: {fileID: 859627024}
+  m_Layer: 0
+  m_Name: AcidDropParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &859627024
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -847,10 +862,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &607710913
+=======
+  acidDropPrefab: {fileID: 7543880715492580143, guid: 9da5784a165afd44c89432009637fa31, type: 3}
+  floor: {fileID: 1174850948}
+  limitLeft: -7
+  limitRight: 7
+  acidDropOffset: 1
+  roofOffset: 27
+  spawnChance: 0.01
+  nextDifRamp: 100
+  difIncreaseTax: 2
+--- !u!4 &859627025
+>>>>>>> Stashed changes
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2176,12 +2204,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b51f94fa4263614cb53db2f95f10151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
 --- !u!4 &1369071518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2924656391954651684, guid: 35db96fb08a8bb54f93f02ffbe2391ce, type: 3}
   m_PrefabInstance: {fileID: 8783582540087237194}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1393770536
+=======
+  speed: 4
+  nextSpeedRamp: 100
+  speedIncreaseTax: 1.1
+--- !u!1 &1232792766
+>>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

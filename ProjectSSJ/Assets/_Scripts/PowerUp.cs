@@ -41,6 +41,19 @@ public class PowerUp : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    public void Death()
+    {
+        GetComponent<BugSoundEffects>().Dying();
+
+        if(inButt)
+            playerButt.GetComponent<PlayerButt>().RemoveBug(gameObject.name);
+        
+        Destroy(gameObject);
+    }
+
+>>>>>>> Stashed changes
     public void SetPlayerObj(GameObject _playerButt)
     {
         playerButt = _playerButt;
