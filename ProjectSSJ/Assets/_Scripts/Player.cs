@@ -16,32 +16,33 @@ public class Player : MonoBehaviour
     {
         Movement();
         Shoot();
+        Pause();
     }
 
     private void Movement()
     {
         Vector3 pos = transform.position;
 
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             Vector2 force = Vector2.zero;
             force.y += moveSpeedY * Time.deltaTime;
             rigBody.AddForce(force);
         }
-        if(Input.GetKey(KeyCode.S))
+        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             Vector2 force = Vector2.zero;
             force.y -= moveSpeedY * Time.deltaTime * 0.5f;
             rigBody.AddForce(force);
         }
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             pos.x-=moveSpeedX*Time.deltaTime;
             transform.position=pos;
 
             rigBody.velocity = new Vector2(0, rigBody.velocity.y);
         }
-        if(Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             pos.x+=moveSpeedX*Time.deltaTime;
             transform.position=pos;
@@ -55,6 +56,14 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bullet, transform.position, Quaternion.identity, bulletParent.transform);
+        }
+    }
+
+    private void Pause()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            CanvasControler.Pause();
         }
     }
 

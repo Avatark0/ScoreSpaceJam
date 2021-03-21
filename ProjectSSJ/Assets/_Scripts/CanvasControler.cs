@@ -9,14 +9,14 @@ public class CanvasControler : MonoBehaviour
     [SerializeField] private GameObject gameMenu = default;
     [SerializeField] private GameObject endMenu = default;
 
-    private bool paused;
+    private static bool paused;
 
     private void Start()
     {
         startMenu.SetActive(true);
         gameMenu.SetActive(false);
         endMenu.SetActive(false);
-        Pause(); 
+        Time.timeScale=0;
     }
 
     public void GameStart()
@@ -24,7 +24,7 @@ public class CanvasControler : MonoBehaviour
         startMenu.SetActive(false);
         gameMenu.SetActive(true);
         endMenu.SetActive(false);
-        Pause();
+        Time.timeScale=1;
     }
 
     public void GameOver()
@@ -32,7 +32,7 @@ public class CanvasControler : MonoBehaviour
         startMenu.SetActive(false);
         gameMenu.SetActive(false);
         endMenu.SetActive(true);
-        Pause();
+        Time.timeScale=0;
     }
 
     public void GameRestart()
@@ -42,17 +42,20 @@ public class CanvasControler : MonoBehaviour
         SceneManager.LoadScene(_name);
     }
 
-    public void Pause()
+    public static void Pause()
     {
-        if(!paused)
+        if(gameMenu.ActiveSelf)
         {
-            Time.timeScale=0;
-            paused=true;
-        }
-        else
-        {
-            Time.timeScale=1;
-            paused=false;
+            if(!paused)
+            {
+                Time.timeScale=0;
+                paused=true;
+            }
+            else
+            {
+                Time.timeScale=1;
+                paused=false;
+            }
         }
     }
 }
