@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: f6ba8e51b73c4874f9a3ea428bbf89b0
+guid: d7182183cd53e4644a469505c5efb26b
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 8295711413016855590
-    second: platform_animation_0
-  - first:
-      213: 6536232668851667864
-    second: platform_animation_1
-  - first:
-      213: 2149269568510215947
-    second: platform_animation_2
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -50,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,32 +113,11 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: platform_animation_0
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 416
-        width: 325
-        height: 116
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 624060cd399402370800000000000000
-      internalID: 8295711413016855590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5ce4db5ef7319a04c9af26f05fc484b5
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
