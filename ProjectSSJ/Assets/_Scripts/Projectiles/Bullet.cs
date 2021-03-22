@@ -4,53 +4,50 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigBody = default;
-    [SerializeField] private AudioClip hitSound = default;
+    //[SerializeField] private AudioClip hitSound = default;
     
-    [SerializeField] private float baseForce = default;
+    private float force = 8f;
 
     private void Start()
     {
+        GameObject bulletParent;
+        bulletParent = GameObject.FindWithTag("BulletParent");
+        transform.SetParent(bulletParent.transform);
+
         Vector2 direction = Vector2.up;
-        
-        float force = baseForce * BugAmount();
-        
         Vector2 power = direction * force;
         
+        Rigidbody2D rigBody;
+        rigBody =  gameObject.AddComponent<Rigidbody2D>();
+        rigBody.mass = 0.1f;
+        rigBody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
         rigBody.AddForce(power, ForceMode2D.Impulse);
-
-        AudioSource.PlayClipAtPoint(hitSound, transform.position);
     }
 
-    private float BugAmount()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        return 1;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        Debug.Log(other.gameObject.name);
-        if(other.gameObject.tag=="Player")
+        //Debug.Log(other.gameObject.name);
+        if(other.gameObject.tag!="Player")
         {
-            AudioSource.PlayClipAtPoint(hitSound, transform.position);
-        }
-        else if(other.gameObject.tag!="PlayerButt" && other.gameObject.tag!="Bullet")
-        {
-            if(other.gameObject.tag=="Platform")
+           if(other.gameObject.tag!="PlayerButt" && other.gameObject.tag!="Bullet")
             {
-                other.gameObject.GetComponent<Platform>().Damage();
-            }
-            else if(other.gameObject.tag=="Bug")
-            {
-                other.gameObject.GetComponent<PowerUp>().Death();
-            }
-            else if(other.gameObject.tag=="AcidDrop")
-            {
-                other.gameObject.GetComponent<AcidDrop>().Death();
-            }
+                if(other.gameObject.tag=="Platform")
+                {
+                    other.gameObject.GetComponent<Platform>().Damage();
+                }
+                else if(other.gameObject.tag=="Bug")
+                {
+                    other.gameObject.GetComponent<PowerUp>().AttachToPlayerButt();
+                }
+                else if(other.gameObject.tag=="AcidDrop")
+                {
+                    other.gameObject.GetComponent<AcidDrop>().Death();
+                }
 
-            AudioSource.PlayClipAtPoint(hitSound, transform.position);
-            Destroy(gameObject);
+                //AudioSource.PlayClipAtPoint(hitSound, transform.position);
+                Destroy(gameObject);
+            }
         }
     }
 }

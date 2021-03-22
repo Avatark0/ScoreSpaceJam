@@ -8,7 +8,8 @@ public class ObjectShredder : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Destroy(other.gameObject);
+            Debug.Log("ObjectShredder: player took damage");
+            other.gameObject.GetComponent<Player>().TakeDamage();
         }        
         else if(other.gameObject.tag != "Scenary" && other.gameObject.tag != "PlayerButt")
         {

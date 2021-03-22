@@ -11,7 +11,7 @@ public class PowerUpParent : MonoBehaviour
     [SerializeField] private float limitLeft = default;
     [SerializeField] private float limitRight = default;
 
-    [SerializeField] private float powerUpOffset = default;
+    //[SerializeField] private float powerUpOffset = default;
     [SerializeField] private float roofOffset = default;
 
     [SerializeField, Range(0.1f,100f)] private float portion_firefly = 10f;
@@ -33,7 +33,7 @@ public class PowerUpParent : MonoBehaviour
         Vector3 pos = new Vector3(posX, posY, 0);
 
         float scaled = rands[1] * (portion_firefly + portion_cricket + portion_bee);
-        Debug.Log(rands[1] + " => " + scaled);
+        //Debug.Log(rands[1] + " => " + scaled);
         int i = 0; // firefly
         if (scaled > portion_firefly) {
             i = 1; // cricket

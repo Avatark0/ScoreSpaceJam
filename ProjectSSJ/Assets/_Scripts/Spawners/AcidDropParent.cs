@@ -10,15 +10,15 @@ public class AcidDropParent : MonoBehaviour
     [SerializeField] private float limitLeft = default;
     [SerializeField] private float limitRight = default;
 
-    [SerializeField] private float acidDropOffset = default;
+    //[SerializeField] private float acidDropOffset = default;
     [SerializeField] private float roofOffset = default;
-    [SerializeField, Range(0,1)] private float spawnChance = default;
+    //[SerializeField, Range(0,1)] private float spawnChance = default;
 
-    [SerializeField] private float nextDifRamp = 100;
-    [SerializeField] private float difIncreaseTax = 5f;
+    //[SerializeField] private float nextDifRamp = 100;
+    //[SerializeField] private float difIncreaseTax = 5f;
 
-    private float lastDropPos = 100;
-    private float spawnChanceSum = 0;
+    //private float lastDropPos = 100;
+    //private float spawnChanceSum = 0;
     
     void Update()
     {

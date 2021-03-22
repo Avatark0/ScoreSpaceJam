@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cricket
       objectReference: {fileID: 0}
+    - target: {fileID: 2027763656070640509, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3675649159890427030, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 6
@@ -139,6 +143,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.24458271
       objectReference: {fileID: 0}
+    - target: {fileID: 7105396388837964566, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
+      propertyPath: pickedUp
+      value: 
+      objectReference: {fileID: 8300000, guid: b2f654e16ef37de44aa930fbf4c88d2c, type: 3}
+    - target: {fileID: 7105396388837964566, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
+      propertyPath: shooting
+      value: 
+      objectReference: {fileID: 8300000, guid: ae6fdaeb304dad748800923fd585fae4, type: 3}
     - target: {fileID: 7376585172507411686, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5

@@ -8,13 +8,13 @@ public class PlatformParent : MonoBehaviour
     [SerializeField] private float limitLeft = default;
     [SerializeField] private float limitRight = default;
 
-    [SerializeField] private float platformOffset = default;
+    //[SerializeField] private float platformOffset = default;
     [SerializeField] private float roofOffset = default;
 
-    [SerializeField] private float nextDifRamp = 100;
-    [SerializeField, Range(1,0)] private float difIncreaseTax = 0.8f; 
+    //[SerializeField] private float nextDifRamp = 100;
+    //[SerializeField, Range(1,0)] private float difIncreaseTax = 0.8f; 
 
-    private float lastPlatformPos = 0;
+    //private float lastPlatformPos = 0;
 
     void Update()
     {

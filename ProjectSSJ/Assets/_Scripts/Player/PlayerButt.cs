@@ -8,8 +8,6 @@ public class PlayerButt : MonoBehaviour
     [SerializeField] private AudioSourcePrefab cricketAudio;
     [SerializeField] private AudioSourcePrefab beeAudio;
 
-    [SerializeField] private GameObject bulletParent = default;
-
     [SerializeField] private float proximityThreshold = 1;
 
     public List<GameObject> bugs = new List<GameObject>();
@@ -146,13 +144,39 @@ public class PlayerButt : MonoBehaviour
         return proximityThreshold;
     }
 
-    public void Shoot()
+    public void BeeShoot()
     {
-        if(bugs.Count>0)
+        if(bees>0)
         {
-            bugs[0].GetComponent<PowerUp>().ShootFromButt();
-            LoseBug(bugs[0]);
+            int i = bugs.FindIndex(GameObject => GameObject.name == "Bee");
+            bugs[i].GetComponent<PowerUp>().BugEffect();
+            LoseBug(bugs[i]);
         }
+    }
+
+    public void CricketBoost()
+    {
+        if(crickets>0)
+        {
+            int i = bugs.FindIndex(GameObject => GameObject.name == "Cricket");
+            bugs[i].GetComponent<PowerUp>().BugEffect();
+            LoseBug(bugs[i]);
+        }
+    }
+
+    public bool FireflyLife()
+    {
+        if(fireflys>0)
+        {
+            Debug.Log("PlayerButt: firefly saved yor life!");
+            int i = bugs.FindIndex(GameObject => GameObject.name == "Firefly");
+            bugs[i].GetComponent<PowerUp>().BugEffect();
+            LoseBug(bugs[i]);
+
+            return true;
+        }
+        else
+            return false;
     }
 
     public void AglomerateBugs(GameObject bug)

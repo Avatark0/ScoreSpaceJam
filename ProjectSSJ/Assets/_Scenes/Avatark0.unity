@@ -156,11 +156,7 @@ MonoBehaviour:
   floor: {fileID: 1573949102}
   limitLeft: -7
   limitRight: 7
-  acidDropOffset: 1
   roofOffset: 27
-  spawnChance: 0.01
-  nextDifRamp: 150
-  difIncreaseTax: 5
 --- !u!4 &39989836
 Transform:
   m_ObjectHideFlags: 0
@@ -351,7 +347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68, y: 700}
+  m_AnchoredPosition: {x: 356, y: 700}
   m_SizeDelta: {x: 330, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &111419413
@@ -613,10 +609,7 @@ MonoBehaviour:
   floor: {fileID: 1573949102}
   limitLeft: -5
   limitRight: 5
-  platformOffset: 10
   roofOffset: 27
-  nextDifRamp: 70
-  difIncreaseTax: 0.76
 --- !u!4 &211035440
 Transform:
   m_ObjectHideFlags: 0
@@ -1090,7 +1083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 356, y: 700}
+  m_AnchoredPosition: {x: -68, y: 700}
   m_SizeDelta: {x: 330, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566971731
@@ -1539,7 +1532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &794702707
 Transform:
   m_ObjectHideFlags: 0
@@ -1785,7 +1778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469c362f9ab5fe44ea12ae79df686b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: {fileID: 1573949102}
   scoreText: {fileID: 1520658386}
   fireflyText: {fileID: 111419413}
   cricketText: {fileID: 1863993254}
@@ -1893,11 +1885,10 @@ MonoBehaviour:
   playerButt: {fileID: 1012761901}
   limitLeft: -7
   limitRight: 7
-  powerUpOffset: 1
   roofOffset: 27
   portion_firefly: 10
   portion_cricket: 30
-  portion_bee: 100
+  portion_bee: 50
 --- !u!4 &932148291
 Transform:
   m_ObjectHideFlags: 0
@@ -2009,6 +2000,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.37
       objectReference: {fileID: 0}
+    - target: {fileID: 345044711651076838, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2199482583269852401, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2054,10 +2049,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2199482583269852403, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
-      propertyPath: moveSpeedY
-      value: 1050
-      objectReference: {fileID: 0}
-    - target: {fileID: 2199482583269852403, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1318285964}
@@ -2089,6 +2080,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 6982729164997789066, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+      propertyPath: m_Name
+      value: ShildSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982729164997789066, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8497293503033617812, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
       propertyPath: beeAudio
       value: 
@@ -2103,7 +2102,6 @@ PrefabInstance:
       objectReference: {fileID: 623226545}
     m_RemovedComponents:
     - {fileID: 7310016749684724090, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
-    - {fileID: 8497293503033617812, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
 --- !u!1 &1012761901 stripped
 GameObject:
@@ -2115,11 +2113,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2367618938170504393, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
   m_PrefabInstance: {fileID: 1012761900}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1012761903
+--- !u!114 &1012761903 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8497293503033617812, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+  m_PrefabInstance: {fileID: 1012761900}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012761901}
   m_Enabled: 1
@@ -2127,18 +2124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baaf07e533ba19e47a86662c5f2cd271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireflyAudio: {fileID: 0}
-  cricketAudio: {fileID: 0}
-  beeAudio: {fileID: 0}
-  bulletParent: {fileID: 0}
-  proximityThreshold: 1
-  bugs: []
-  fireflys: 0
-  crickets: 0
-  bees: 0
-  totalFireflys: 0
-  totalCrickets: 0
-  totalBees: 0
 --- !u!95 &1012761904
 Animator:
   serializedVersion: 3
@@ -2962,6 +2947,63 @@ Transform:
   m_Father: {fileID: 1251828411}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1496262367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1496262368}
+  - component: {fileID: 1496262369}
+  m_Layer: 0
+  m_Name: ExtraFloor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1496262368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496262367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -17.32, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2146622696}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1496262369
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496262367}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 15.3, y: 11.4}
+  m_EdgeRadius: 0
 --- !u!1 &1520658384
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,7 +3095,7 @@ GameObject:
   - component: {fileID: 1559631711}
   m_Layer: 11
   m_Name: Roof
-  m_TagString: Untagged
+  m_TagString: Roof
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3085,7 +3127,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 15.64}
+  m_Offset: {x: 0, y: 22}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3187,7 +3229,7 @@ GameObject:
   - component: {fileID: 1573949103}
   m_Layer: 11
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9090,7 +9132,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -3.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1496262368}
   m_Father: {fileID: 1573949106}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9140,7 +9183,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -15.48}
+  m_Offset: {x: 0, y: -5.8}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9151,5 +9194,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 17.5, y: 32}
+  m_Size: {x: 17.5, y: 12}
   m_EdgeRadius: 0

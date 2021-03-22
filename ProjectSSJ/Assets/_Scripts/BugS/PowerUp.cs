@@ -4,28 +4,25 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletParent = default;
     [SerializeField] private GameObject playerButt = default;
     [SerializeField] private Rigidbody2D rigBody = default;
 
-    [SerializeField] private float launchSpeed = default;
+    //[SerializeField] private float launchSpeed = default;
 
     private bool inButt;
     private bool translateTo;
     private bool translateOut;
     private float translationSpeed = 2;
 
-    private Vector3 finalPos = new Vector3();
-    //private Vector3 translationVector = new Vector3();
+    private float cricketBoostPower = 10;
+    private float fireflyBoostPower = 20;
 
-    private void Start()
-    {
-        bulletParent = GameObject.FindWithTag("BulletParent");
-    }
+    //private Vector3 finalPos = new Vector3();
+    //private Vector3 translationVector = new Vector3();
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "PlayerButt")
+        if(other.gameObject.tag == "PlayerButt" && gameObject.tag == "Bug")
         {
             AttachToPlayerButt();
         }
@@ -55,8 +52,11 @@ public class PowerUp : MonoBehaviour
             transform.parent = playerButt.transform;
             transform.rotation=Quaternion.identity;
 
-            Destroy(rigBody);
-            rigBody = playerButt.GetComponentInParent<Rigidbody2D>();
+            if(rigBody.gameObject==this.gameObject)
+            {
+                Destroy(rigBody);
+                rigBody = playerButt.GetComponentInParent<Rigidbody2D>();
+            }
 
             gameObject.tag = "PlayerButt";
             inButt = true;
@@ -79,6 +79,11 @@ public class PowerUp : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void NotInButt()
+    {
+        inButt = false;
+    }
+
     private void Move()
     {
         Vector3 translationVector = new Vector3();
@@ -98,12 +103,6 @@ public class PowerUp : MonoBehaviour
                 playerButt.GetComponent<PlayerButt>().IncreaseProximityThreshold();
             }
         }
-        else if(translateOut)
-        {
-            translationVector = Vector3.up;
-
-            transform.Translate(translationVector * Time.deltaTime * launchSpeed);
-        }
     }
 
     private void StartTranslation()
@@ -116,19 +115,64 @@ public class PowerUp : MonoBehaviour
         playerButt = _playerButt;
     }
 
-    public string BugName()
+    public void BugEffect()
     {
-        return gameObject.name;
+        playerButt.GetComponent<PlayerButt>().DecreaseProximityThreshold();
+
+        string myName = gameObject.name;
+        switch(myName)
+        {
+            case "Firefly":
+            {
+                FireflyEffect();
+                break;
+            }
+            case "Cricket":
+            {
+                CricketEffect();
+                break;
+            }
+            case "Bee":
+            {
+                BeeEffect();
+                break;
+            }
+        }
     }
 
-    public void ShootFromButt()
+    private void FireflyEffect()
     {
-        transform.SetParent(bulletParent.transform);
+        Debug.Log("PowerUp: FireflyEffect saved your life!");
         
-        translateOut=true;
+        Vector2 direction = Vector2.up;
+        Vector2 power = direction * fireflyBoostPower;
+
+        Rigidbody2D rigBody;
+        rigBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
+        rigBody.AddForce(power, ForceMode2D.Impulse);
+
+        NotInButt();
+        Death();
+    }
+
+    private void CricketEffect()
+    {
+        Vector2 direction = Vector2.up;
+        Vector2 power = direction * cricketBoostPower;
+
+        Rigidbody2D rigBody;
+        rigBody = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
+        rigBody.AddForce(power, ForceMode2D.Impulse);
+
+        NotInButt();
+        Death();
+    }
+
+    private void BeeEffect()
+    {
+        inButt = false;
 
         gameObject.tag = "Bullet";
-
-        playerButt.GetComponent<PlayerButt>().DecreaseProximityThreshold();
+        gameObject.AddComponent<Bullet>();
     }
 }

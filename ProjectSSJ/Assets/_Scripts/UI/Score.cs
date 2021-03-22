@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private GameObject floor = default;
+    //[SerializeField] private GameObject floor = default;
     
     [SerializeField] private Text scoreText = default;
     [SerializeField] private Text fireflyText = default;
@@ -13,7 +13,7 @@ public class Score : MonoBehaviour
     [SerializeField] private Text beeText = default;
 
     private static int flyValue = 50;
-    private static int criValue = 10;
+    private static int criValue = 20;
     private static int beeValue = 10;
 
     private static int fireflys = 0;

@@ -12,7 +12,8 @@ TagManager:
   - Platform
   - AcidDrop
   - Bullet
-  - BugAmalgamation
+  - Roof
+  - Floor
   layers:
   - Default
   - TransparentFX
