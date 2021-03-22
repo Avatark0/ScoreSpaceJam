@@ -13,14 +13,11 @@ public class PowerUpParent : MonoBehaviour
 
     [SerializeField] private float powerUpOffset = default;
     [SerializeField] private float roofOffset = default;
-    [SerializeField, Range(0.1f,0)] private float spawnChance = default;
 
-    [SerializeField] private float nextSpawnRamp = 100;
-    [SerializeField, Range(1,0)] private float spawnIncreaseTax = 0.65f;
+    [SerializeField, Range(0.1f,100f)] private float portion_firefly = 10f;
+    [SerializeField, Range(0.1f,100f)] private float portion_cricket = 30f;
+    [SerializeField, Range(0.1f,100f)] private float portion_bee = 100f;
 
-    private float lastPowerUpPos = 0;
-    private float spawnChanceSum = 0;
-    
     void Update()
     {
         if (GlobalSpawner.IsTimeForBug()) {
@@ -35,9 +32,16 @@ public class PowerUpParent : MonoBehaviour
         float posY = floor.transform.position.y + roofOffset;
         Vector3 pos = new Vector3(posX, posY, 0);
 
-        // 20% chance firefly, 40% cricket, 40% bee
-        int i = (int) Mathf.Floor(.5f+rands[1]*2.5f);
-        
+        float scaled = rands[1] * (portion_firefly + portion_cricket + portion_bee);
+        Debug.Log(rands[1] + " => " + scaled);
+        int i = 0; // firefly
+        if (scaled > portion_firefly) {
+            i = 1; // cricket
+        }
+        if (scaled > portion_firefly + portion_cricket) {
+            i = 2; // bee
+        }
+
         GameObject powerUp = Instantiate(powerUpPrefabs[i], pos, Quaternion.identity, transform);
         powerUp.GetComponent<PowerUp>().SetPlayerObj(playerButt);
 
