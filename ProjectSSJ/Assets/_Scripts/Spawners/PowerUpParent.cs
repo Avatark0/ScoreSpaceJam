@@ -35,7 +35,8 @@ public class PowerUpParent : MonoBehaviour
         float posY = floor.transform.position.y + roofOffset;
         Vector3 pos = new Vector3(posX, posY, 0);
 
-        int i = (int) Mathf.Floor(rands[1]*3);
+        // 20% chance firefly, 40% cricket, 40% bee
+        int i = (int) Mathf.Floor(.5f+rands[1]*2.5f);
         
         GameObject powerUp = Instantiate(powerUpPrefabs[i], pos, Quaternion.identity, transform);
         powerUp.GetComponent<PowerUp>().SetPlayerObj(playerButt);
