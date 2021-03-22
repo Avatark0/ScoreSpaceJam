@@ -8,6 +8,8 @@ public class CanvasControler : MonoBehaviour
     [SerializeField] private GameObject startMenu = default;
     [SerializeField] private GameObject gameMenu = default;
     [SerializeField] private GameObject endMenu = default;
+    [SerializeField] private GameObject pauseMenu = default;
+    [SerializeField] private GameObject creditsMenu = default;
 
     private static bool started;
     private static bool paused;
@@ -17,6 +19,8 @@ public class CanvasControler : MonoBehaviour
         startMenu.SetActive(true);
         gameMenu.SetActive(false);
         endMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        creditsMenu.SetActive(false);
         Time.timeScale=0;
     }
 
@@ -47,17 +51,27 @@ public class CanvasControler : MonoBehaviour
         Score.ResetStaticValues();
     }
 
-    public static void Pause()
+    public void Credits()
+    {
+        if(!creditsMenu.activeSelf)
+            creditsMenu.SetActive(true);
+        else
+            creditsMenu.SetActive(false);
+    }
+
+    public void Pause()
     {
         if(started)
         {
             if(!paused)
             {
+                pauseMenu.SetActive(true);
                 Time.timeScale=0;
                 paused=true;
             }
             else
             {
+                pauseMenu.SetActive(false);
                 Time.timeScale=1;
                 paused=false;
             }

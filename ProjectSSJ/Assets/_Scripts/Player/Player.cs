@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
-            CanvasControler.Pause();
+            canvasControler.Pause();
         }
     }
 
