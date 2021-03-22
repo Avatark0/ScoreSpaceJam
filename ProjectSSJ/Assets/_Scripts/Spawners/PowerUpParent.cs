@@ -40,7 +40,6 @@ public class PowerUpParent : MonoBehaviour
         
         GameObject powerUp = Instantiate(powerUpPrefabs[i], pos, Quaternion.identity, transform);
         powerUp.GetComponent<PowerUp>().SetPlayerObj(playerButt);
-        powerUp.GetComponent<PowerUp>().SetPowerUpParentObj(gameObject);
 
         switch(i)
         {

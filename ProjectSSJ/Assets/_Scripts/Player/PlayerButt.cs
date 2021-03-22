@@ -136,6 +136,11 @@ public class PlayerButt : MonoBehaviour
         proximityThreshold += 1 / proximityThreshold;
     }
 
+    public void DecreaseProximityThreshold()
+    {
+        proximityThreshold -= 1 / proximityThreshold;
+    }
+
     public float GetProximityThereshold()
     {
         return proximityThreshold;

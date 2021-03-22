@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    [SerializeField] private GameObject powerUpParent = default;
+    [SerializeField] private GameObject bulletParent = default;
     [SerializeField] private GameObject playerButt = default;
     [SerializeField] private Rigidbody2D rigBody = default;
 
@@ -17,6 +17,11 @@ public class PowerUp : MonoBehaviour
 
     private Vector3 finalPos = new Vector3();
     //private Vector3 translationVector = new Vector3();
+
+    private void Start()
+    {
+        bulletParent = GameObject.FindWithTag("BulletParent");
+    }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -48,6 +53,7 @@ public class PowerUp : MonoBehaviour
         if(!inButt)
         {
             transform.parent = playerButt.transform;
+            transform.rotation=Quaternion.identity;
 
             Destroy(rigBody);
             rigBody = playerButt.GetComponentInParent<Rigidbody2D>();
@@ -110,11 +116,6 @@ public class PowerUp : MonoBehaviour
         playerButt = _playerButt;
     }
 
-    public void SetPowerUpParentObj(GameObject _powerUpParent)
-    {
-        powerUpParent = _powerUpParent;
-    }
-
     public string BugName()
     {
         return gameObject.name;
@@ -122,8 +123,12 @@ public class PowerUp : MonoBehaviour
 
     public void ShootFromButt()
     {
-        transform.SetParent(powerUpParent.transform);
+        transform.SetParent(bulletParent.transform);
         
         translateOut=true;
+
+        gameObject.tag = "Bullet";
+
+        playerButt.GetComponent<PlayerButt>().DecreaseProximityThreshold();
     }
 }
