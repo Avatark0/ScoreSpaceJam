@@ -164,10 +164,9 @@ public class Player : MonoBehaviour
         Vector2 floorPos = floor.transform.position;
         Vector2 roofPos = roof.transform.position;
 
-        if(Mathf.Abs(transform.position.magnitude - (floorPos + roofPos).magnitude) < 60)//3.4 == sheredder position offset
+        if(Mathf.Abs(transform.position.magnitude - (floorPos + roofPos).magnitude) < 100)//3.4 == sheredder position offset
         {
-            Vector2 pos = floorPos + roofPos;
-            pos.y -= 6; 
+            Vector2 pos = GameObject.FindWithTag("Repositioner").transform.position; 
             transform.position = pos;
         }
     }
