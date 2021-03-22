@@ -8,7 +8,6 @@ public class ObjectShredder : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Score.ResetStaticValues();
             Destroy(other.gameObject);
         }        
         else if(other.gameObject.tag != "Scenary" && other.gameObject.tag != "PlayerButt")

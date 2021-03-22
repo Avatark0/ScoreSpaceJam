@@ -35,8 +35,6 @@ public class PlayerButt : MonoBehaviour
         bugs.Add(bug);
 
         AddBug(bug.name);
-
-        Score.PlayerBugs(fireflys, crickets, bees);
     }
 
     public void LoseBug(GameObject bug)
@@ -44,8 +42,6 @@ public class PlayerButt : MonoBehaviour
         bugs.Remove(bug);
 
         SubBug(bug.name);
-
-        Score.PlayerBugs(fireflys, crickets, bees);
     }
 
     private void AddBug(string bugName)
@@ -58,7 +54,11 @@ public class PlayerButt : MonoBehaviour
             {
                 fireflys++;
                 totalFireflys++;
+
                 fireflyAudio.TrackVolumeControl(increase);
+
+                Score.AddFly();
+
                 break;
             }
 
@@ -66,7 +66,11 @@ public class PlayerButt : MonoBehaviour
             {
                 crickets++;
                 totalCrickets++;
+
                 cricketAudio.TrackVolumeControl(increase);
+                
+                Score.AddCri();
+
                 break;
             }
                 
@@ -74,7 +78,11 @@ public class PlayerButt : MonoBehaviour
             {
                 bees++;
                 totalBees++;
+
                 beeAudio.TrackVolumeControl(increase);
+
+                Score.AddBee();
+
                 break;
             }
         }
@@ -89,38 +97,50 @@ public class PlayerButt : MonoBehaviour
             case "Firefly":
             {
                 fireflys--;
+
                 fireflyAudio.TrackVolumeControl(!increase);
+
+                Score.SubFly();
+
                 break;
             }
 
             case "Cricket":
             {
                 crickets--;
+
                 cricketAudio.TrackVolumeControl(!increase);
+
+                Score.SubCri();
+
                 break;
             }
                 
             case "Bee":
             {
                 bees--;
+
                 beeAudio.TrackVolumeControl(!increase);
+
+                Score.SubBee();
+
                 break;
             }
         }
     }
 
-    public void AglomerateBugs(GameObject bug)
-    {
-        //bug.GetComponent<PowerUp>().
-    }
-
     public void IncreaseProximityThreshold()
     {
-        proximityThreshold += (proximityThreshold + 1) / proximityThreshold;
+        proximityThreshold += 1 / proximityThreshold;
     }
 
     public float GetProximityThereshold()
     {
         return proximityThreshold;
+    }
+
+    public void AglomerateBugs(GameObject bug)
+    {
+        //bug.GetComponent<PowerUp>().
     }
 }

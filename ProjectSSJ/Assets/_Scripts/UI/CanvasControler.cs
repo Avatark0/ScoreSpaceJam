@@ -44,6 +44,7 @@ public class CanvasControler : MonoBehaviour
         _name = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(_name);
         GlobalSpawner.ReInitLevel();
+        Score.ResetStaticValues();
     }
 
     public static void Pause()
