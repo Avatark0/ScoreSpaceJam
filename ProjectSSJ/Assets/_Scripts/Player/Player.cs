@@ -21,12 +21,14 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         Vector3 pos = transform.position;
-
+        AudioSource wings = GameObject.Find("Audio-Wings").GetComponent<AudioSource>();
+        wings.pitch /= 1.01f;
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             Vector2 force = Vector2.zero;
             force.y += moveSpeedY * Time.deltaTime;
             rigBody.AddForce(force);
+            wings.pitch += 0.01f;
         }
         if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
