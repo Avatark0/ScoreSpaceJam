@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2027763656070640509, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
       propertyPath: m_Volume
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3675649159890427030, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size

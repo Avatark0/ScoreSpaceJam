@@ -215,7 +215,10 @@ MonoBehaviour:
   rigBody: {fileID: 1136920509506325189}
   moveSpeedX: 8
   moveSpeedY: 1050
-  verticalSpeedLimit: 10
+  verticalSpeedLimit: 14
+  FloorRigBody: {fileID: 0}
+  floor: {fileID: 0}
+  roof: {fileID: 0}
   playerButt: {fileID: 1617362653980311353}
   shieldSprite: {fileID: 6982729164997789066}
   invensibilityTime: 2
@@ -578,10 +581,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2199482583269852401}
     m_Modifications:
-    - target: {fileID: 1204306484895525210, guid: 35db96fb08a8bb54f93f02ffbe2391ce, type: 3}
-      propertyPath: m_Volume
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1204306484895525210, guid: 35db96fb08a8bb54f93f02ffbe2391ce, type: 3}
       propertyPath: m_audioClip
       value: 

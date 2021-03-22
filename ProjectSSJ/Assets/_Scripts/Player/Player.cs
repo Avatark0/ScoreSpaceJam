@@ -10,6 +10,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeedX=default;
     [SerializeField] private float moveSpeedY=default;
     [SerializeField] private float verticalSpeedLimit = default;
+
+    [SerializeField] private Rigidbody2D FloorRigBody=default;
+
+    [SerializeField] private GameObject floor=default;
+    [SerializeField] private GameObject roof=default;
     
     [SerializeField] private GameObject playerButt = default;
     [SerializeField] private GameObject shieldSprite = default;
@@ -18,7 +23,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int lifePoints = 1;
 
-    private bool invensibilityFrames;
+    private bool invensibilityFrames = false;
     public bool shieldDamageFrames = false;
 
     void Update()
@@ -27,6 +32,8 @@ public class Player : MonoBehaviour
 
         VerticalSpeedLimit();
         invensibilityTimeControl();
+
+        //PositioningSafeFix();
         
         Shoot();
         Boost();
@@ -69,7 +76,7 @@ public class Player : MonoBehaviour
 
     private void VerticalSpeedLimit()
     {
-        if(rigBody.velocity.y > verticalSpeedLimit)
+        if(rigBody.velocity.y > verticalSpeedLimit + FloorRigBody.velocity.y)
         {
             Vector2 vel = rigBody.velocity;
             vel.y = verticalSpeedLimit;
@@ -114,6 +121,9 @@ public class Player : MonoBehaviour
             audioManager=GameObject.Find("AudioManager").GetComponent<AudioManager>();
         audioManager.ResetChildrenValues();
 
+        invensibilityFrames = false;
+        shieldDamageFrames = false;
+
         canvasControler.GameOver();
     }
 
@@ -124,14 +134,8 @@ public class Player : MonoBehaviour
             if(playerButt.GetComponent<PlayerButt>().FireflyLife())
             {
                 invensibilityFrames=true;
-                Vector2 pos = transform.position;
-                Vector2 roofPos = GameObject.FindWithTag("Roof").transform.position;
-                Vector2 floorPos = GameObject.FindWithTag("Floor").transform.position;
-                pos.y = floorPos.y + (roofPos.y * 0.4f);
-                transform.position = pos;
+                
                 AudioSource.PlayClipAtPoint(fireflyEffect, transform.position);
-
-                Debug.Log("Player: got saved to pos = "+pos);
             }
             else
             {
@@ -152,6 +156,19 @@ public class Player : MonoBehaviour
 
             if(invensibilityTime < 0.1f)
                 invensibilityFrames = false;
+        }
+    }
+
+    private void PositioningSafeFix()
+    {
+        Vector2 floorPos = floor.transform.position;
+        Vector2 roofPos = roof.transform.position;
+
+        if(Mathf.Abs(transform.position.magnitude - (floorPos + roofPos).magnitude) < 60)//3.4 == sheredder position offset
+        {
+            Vector2 pos = floorPos + roofPos;
+            pos.y -= 6; 
+            transform.position = pos;
         }
     }
 }

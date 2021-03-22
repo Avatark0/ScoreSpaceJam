@@ -85,10 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f771457a4f2c436429b9ebfd732e0f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletParent: {fileID: 0}
   playerButt: {fileID: 0}
   rigBody: {fileID: 712128862506349737}
-  launchSpeed: 20
 --- !u!114 &507933295065903947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +144,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -22,6 +22,8 @@ public class Bullet : MonoBehaviour
         rigBody.mass = 0.1f;
         rigBody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
+        rigBody.velocity = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>().velocity;
+
         rigBody.AddForce(power, ForceMode2D.Impulse);
     }
 
@@ -34,6 +36,9 @@ public class Bullet : MonoBehaviour
             {
                 if(other.gameObject.tag=="Platform")
                 {
+                    other.gameObject.GetComponent<Platform>().Damage();
+                    other.gameObject.GetComponent<Platform>().Damage();
+                    other.gameObject.GetComponent<Platform>().Damage();
                     other.gameObject.GetComponent<Platform>().Damage();
                 }
                 else if(other.gameObject.tag=="Bug")
