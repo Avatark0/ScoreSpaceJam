@@ -114,6 +114,8 @@ MonoBehaviour:
   fireflyAudio: {fileID: 0}
   cricketAudio: {fileID: 0}
   beeAudio: {fileID: 0}
+  bulletParent: {fileID: 0}
+  proximityThreshold: 1
   bugs: []
   fireflys: 0
   crickets: 0
@@ -155,7 +157,6 @@ Transform:
   - {fileID: 4128517218980846964}
   - {fileID: 2034989055967662787}
   - {fileID: 2621248377969723657}
-  - {fileID: 6872854171852922691}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -213,8 +214,7 @@ MonoBehaviour:
   rigBody: {fileID: 1136920509506325189}
   moveSpeedX: 8
   moveSpeedY: 1000
-  bullet: {fileID: 3144815075390136847, guid: 4d213e1baa4586646abfdbdd7cf29d26, type: 3}
-  bulletParent: {fileID: 0}
+  playerButt: {fileID: 1617362653980311353}
 --- !u!1 &2367618938170504393
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,66 +297,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2956146029675817635
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6872854171852922691}
-  - component: {fileID: 4416731625413979365}
-  - component: {fileID: 684007600104894967}
-  m_Layer: 0
-  m_Name: BugAmalgamation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6872854171852922691
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2956146029675817635}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2199482583269852401}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &4416731625413979365
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2956146029675817635}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.03, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
---- !u!114 &684007600104894967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2956146029675817635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5cff7f0ca8b57749b6a5ca6813c56fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7633605034448961442
 GameObject:
   m_ObjectHideFlags: 0

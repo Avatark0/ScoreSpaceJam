@@ -8,6 +8,8 @@ public class PlayerButt : MonoBehaviour
     [SerializeField] private AudioSourcePrefab cricketAudio;
     [SerializeField] private AudioSourcePrefab beeAudio;
 
+    [SerializeField] private GameObject bulletParent = default;
+
     [SerializeField] private float proximityThreshold = 1;
 
     public List<GameObject> bugs = new List<GameObject>();
@@ -137,6 +139,15 @@ public class PlayerButt : MonoBehaviour
     public float GetProximityThereshold()
     {
         return proximityThreshold;
+    }
+
+    public void Shoot()
+    {
+        if(bugs.Count>0)
+        {
+            bugs[0].GetComponent<PowerUp>().ShootFromButt();
+            LoseBug(bugs[0]);
+        }
     }
 
     public void AglomerateBugs(GameObject bug)

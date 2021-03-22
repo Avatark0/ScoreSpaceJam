@@ -85,8 +85,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f771457a4f2c436429b9ebfd732e0f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpParent: {fileID: 0}
   playerButt: {fileID: 0}
   rigBody: {fileID: 712128862506349737}
+  launchSpeed: 20
 --- !u!114 &507933295065903947
 MonoBehaviour:
   m_ObjectHideFlags: 0

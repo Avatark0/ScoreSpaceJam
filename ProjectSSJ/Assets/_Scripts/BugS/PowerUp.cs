@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    [SerializeField] private GameObject powerUpParent = default;
     [SerializeField] private GameObject playerButt = default;
     [SerializeField] private Rigidbody2D rigBody = default;
 
-    private float translationSpeed = 2;
+    [SerializeField] private float launchSpeed = default;
+
     private bool inButt;
-    public bool translate;
+    private bool translateTo;
+    private bool translateOut;
+    private float translationSpeed = 2;
 
     private Vector3 finalPos = new Vector3();
-    private Vector3 translationVector = new Vector3();
+    //private Vector3 translationVector = new Vector3();
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -36,7 +40,7 @@ public class PowerUp : MonoBehaviour
 
     private void Update()
     {
-        TranslateToButt();
+        Move();
     }
 
     public void AttachToPlayerButt()
@@ -69,9 +73,11 @@ public class PowerUp : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void TranslateToButt()
+    private void Move()
     {
-        if(translate)
+        Vector3 translationVector = new Vector3();
+
+        if(translateTo)
         {
             Vector3 ini = transform.position;
             Vector3 end = playerButt.transform.position;
@@ -82,15 +88,21 @@ public class PowerUp : MonoBehaviour
 
             if(translationVector.magnitude < playerButt.GetComponent<PlayerButt>().GetProximityThereshold())
             {
-                translate = false;
+                translateTo = false;
                 playerButt.GetComponent<PlayerButt>().IncreaseProximityThreshold();
             }
+        }
+        else if(translateOut)
+        {
+            translationVector = Vector3.up;
+
+            transform.Translate(translationVector * Time.deltaTime * launchSpeed);
         }
     }
 
     private void StartTranslation()
     {
-        translate = true;
+        translateTo = true;
     }
 
     public void SetPlayerObj(GameObject _playerButt)
@@ -98,8 +110,20 @@ public class PowerUp : MonoBehaviour
         playerButt = _playerButt;
     }
 
+    public void SetPowerUpParentObj(GameObject _powerUpParent)
+    {
+        powerUpParent = _powerUpParent;
+    }
+
     public string BugName()
     {
         return gameObject.name;
+    }
+
+    public void ShootFromButt()
+    {
+        transform.SetParent(powerUpParent.transform);
+        
+        translateOut=true;
     }
 }

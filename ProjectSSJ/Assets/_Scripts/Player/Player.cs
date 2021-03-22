@@ -9,8 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeedX=default;
     [SerializeField] private float moveSpeedY=default;
     
-    [SerializeField] private GameObject bullet = default;
-    [SerializeField] private GameObject bulletParent = default;
+    [SerializeField] private GameObject playerButt = default;
 
     void Update()
     {
@@ -55,7 +54,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bullet, transform.position, Quaternion.identity, bulletParent.transform);
+            playerButt.GetComponent<PlayerButt>().Shoot();
         }
     }
 

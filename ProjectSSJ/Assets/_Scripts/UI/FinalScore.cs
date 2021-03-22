@@ -18,8 +18,6 @@ public class FinalScore : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("FinalScore Enabled");
-
         totalFly = Score.GetTotalFly();
         totalCri = Score.GetTotalCri();
         totalBee = Score.GetTotalBee();
