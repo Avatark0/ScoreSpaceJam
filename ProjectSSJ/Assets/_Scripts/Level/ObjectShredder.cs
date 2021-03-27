@@ -6,6 +6,15 @@ public class ObjectShredder : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // if(other.gameObject.tag == "Player")
+        // {
+        //     Debug.Log("ObjectShredder: player took damage");
+        //     other.gameObject.GetComponent<Player>().TakeDamage();
+        // }     
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
         if(other.gameObject.tag == "Player")
         {
             Debug.Log("ObjectShredder: player took damage");
@@ -17,7 +26,7 @@ public class ObjectShredder : MonoBehaviour
         }
         else if(other.gameObject.tag == "PlayerButt" && other.gameObject.name != "Butt")
         {
-            other.gameObject.GetComponent<PowerUp>().Death();
+            other.gameObject.GetComponent<Bug>().Death();
         }
     }
 }

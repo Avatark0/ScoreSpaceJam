@@ -2,108 +2,39 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Managers")]
     [SerializeField] private CanvasControler canvasControler = default;
     [SerializeField] private AudioManager audioManager = default;
-    [SerializeField] private AudioClip fireflyEffect = default;
-
-    [SerializeField] private Rigidbody2D rigBody=default;
-    [SerializeField] private float moveSpeedX=default;
-    [SerializeField] private float moveSpeedY=default;
-    [SerializeField] private float verticalSpeedLimit = default;
-
-    [SerializeField] private Rigidbody2D FloorRigBody=default;
-
-    [SerializeField] private GameObject floor=default;
-    [SerializeField] private GameObject roof=default;
-    
+    [Header("Player Parts")]
     [SerializeField] private GameObject playerButt = default;
     [SerializeField] private GameObject shieldSprite = default;
-
+    [Header("Movement Controls")]
+    [SerializeField] private float moveSpeedX = default;
+    [SerializeField] private float moveSpeedY = default;
+    [SerializeField] private float fallSpeed = default;
     [SerializeField] private float invensibilityTime = default;
-
     [SerializeField] private int lifePoints = 1;
 
-    private bool invensibilityFrames = false;
-    public bool shieldDamageFrames = false;
+    [SerializeField] public bool invensibilityFrames = false;
+    [SerializeField] public bool shieldDamageFrames = false;
+
+    [SerializeField] public float invensibilityTimeControl;
+
+    private void Start()
+    {
+        invensibilityTimeControl = invensibilityTime;
+    }
 
     void Update()
     {
-        Movement();
-
-        VerticalSpeedLimit();
-        invensibilityTimeControl();
-
-        //PositioningSafeFix();
-        
-        Shoot();
-        Boost();
         Pause();
-    }
+        if(!CanvasControler.IsPaused())
+        {
+            Movement();
+            Shoot();
+            Boost();
 
-    private void Movement()
-    {
-        Vector3 pos = transform.position;
-        AudioSource wings = GameObject.Find("Audio-Wings").GetComponent<AudioSource>();
-        wings.pitch /= 1.01f;
-        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            Vector2 force = Vector2.zero;
-            force.y += moveSpeedY * Time.deltaTime;
-            rigBody.AddForce(force);
-            wings.pitch += 0.01f;
-        }
-        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            Vector2 force = Vector2.zero;
-            force.y -= moveSpeedY * Time.deltaTime * 0.5f;
-            rigBody.AddForce(force);
-        }
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            pos.x-=moveSpeedX*Time.deltaTime;
-            transform.position=pos;
-
-            rigBody.velocity = new Vector2(0, rigBody.velocity.y);
-        }
-        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            pos.x+=moveSpeedX*Time.deltaTime;
-            transform.position=pos;
-
-            rigBody.velocity = new Vector2(0, rigBody.velocity.y);
-        }
-    }
-
-    private void VerticalSpeedLimit()
-    {
-        if(rigBody.velocity.y > verticalSpeedLimit + FloorRigBody.velocity.y)
-        {
-            Vector2 vel = rigBody.velocity;
-            vel.y = verticalSpeedLimit;
-            rigBody.velocity = vel;
-        }
-        else if(rigBody.velocity.y < -verticalSpeedLimit/2)
-        {
-            Vector2 vel = rigBody.velocity;
-            vel.y = -verticalSpeedLimit/2;
-            rigBody.velocity = vel;
-        }
-    }
-
-    private void Shoot()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            playerButt.GetComponent<PlayerButt>().BeeShoot();
-        }
-    }
-
-    private void Boost()
-    {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            playerButt.GetComponent<PlayerButt>().CricketBoost();
-            shieldSprite.SetActive(true);
+            InvensibilityTimeControl();
         }
     }
 
@@ -115,30 +46,84 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void Movement()
     {
-        if(audioManager==null)
-            audioManager=GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        audioManager.ResetChildrenValues();
+        Vector3 pos = transform.position;
+        AudioSource wings = GameObject.Find("Audio-Wings").GetComponent<AudioSource>();
+        
+        wings.pitch /= 1.01f;
 
-        invensibilityFrames = false;
-        shieldDamageFrames = false;
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            pos.y+=moveSpeedY*Time.deltaTime;
 
-        canvasControler.GameOver();
+            wings.pitch += 0.01f;
+        }
+        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            pos.y-=moveSpeedY*Time.deltaTime;
+        }
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            pos.x-=moveSpeedX*Time.deltaTime;
+        }
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            pos.x+=moveSpeedX*Time.deltaTime;
+        }
+
+        pos.y-=fallSpeed*Time.deltaTime;
+        transform.position=pos;
+    }
+
+    private void Shoot()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            playerButt.GetComponent<PlayerButt>().UseBee();
+        }
+    }
+
+    private void Boost()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            playerButt.GetComponent<PlayerButt>().UseCricket();
+            shieldSprite.SetActive(true);
+        }
+    }
+
+    private void InvensibilityTimeControl()
+    {
+        if(invensibilityFrames)
+        {
+            invensibilityTimeControl = invensibilityTimeControl - invensibilityTime*Time.deltaTime;
+
+            Debug.Log("invensibilityTimeControl = "+invensibilityTimeControl);
+
+            Vector3 pos = transform.position;
+            pos.y+=moveSpeedY*Time.deltaTime;
+            transform.position=pos;
+
+            if(invensibilityTimeControl < 0.1f)
+                Debug.Log("invensibilityFrames = "+invensibilityFrames);
+                invensibilityFrames = false;
+                invensibilityTimeControl = invensibilityTime;
+        }
     }
 
     public void TakeDamage()
     {
         if(!invensibilityFrames)
         {
-            if(playerButt.GetComponent<PlayerButt>().FireflyLife())
+            if(playerButt.GetComponent<PlayerButt>().UseFirefly())
             {
-                invensibilityFrames=true;
-                
-                AudioSource.PlayClipAtPoint(fireflyEffect, transform.position);
+                invensibilityFrames = true;
             }
             else
             {
+                Debug.Log("InvensibilityFrames = "+invensibilityFrames);
+                Debug.Log("invensibilityTimeControl = "+invensibilityTimeControl);
                 lifePoints--;
                 if(lifePoints<=0)
                 {
@@ -148,26 +133,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void invensibilityTimeControl()
+    private void OnDestroy()
     {
-        if(invensibilityFrames)
-        {
-            invensibilityTime -= invensibilityTime*Time.deltaTime;
+        audioManager=GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        if(audioManager != null)
+            audioManager.ResetChildrenValues();
 
-            if(invensibilityTime < 0.1f)
-                invensibilityFrames = false;
-        }
-    }
+        invensibilityFrames = false;
+        shieldDamageFrames = false;
 
-    private void PositioningSafeFix()
-    {
-        Vector2 floorPos = floor.transform.position;
-        Vector2 roofPos = roof.transform.position;
-
-        if(Mathf.Abs(transform.position.magnitude - (floorPos + roofPos).magnitude) < 100)//3.4 == sheredder position offset
-        {
-            Vector2 pos = GameObject.FindWithTag("Repositioner").transform.position; 
-            transform.position = pos;
-        }
+        canvasControler.GameOver();
     }
 }

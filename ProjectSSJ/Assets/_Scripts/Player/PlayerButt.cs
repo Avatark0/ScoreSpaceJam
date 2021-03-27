@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class PlayerButt : MonoBehaviour
 {
+    [Header("Bugs audio tracks")]
     [SerializeField] private AudioSourcePrefab fireflyAudio;
     [SerializeField] private AudioSourcePrefab cricketAudio;
     [SerializeField] private AudioSourcePrefab beeAudio;
 
+    [Header("Attraction distance of caught bugs")]
     [SerializeField] private float proximityThreshold = 1;
 
-    public List<GameObject> bugs = new List<GameObject>();
+    [HideInInspector] public List<GameObject> bugs = new List<GameObject>();
 
+    [Header("Current number of each bug caught")]
     public int fireflys;
     public int crickets;
     public int bees;
 
+    [Header("Total number of each bug caught")]
     public int totalFireflys;
     public int totalCrickets;
     public int totalBees;
 
-    public void RestartValues()
+    public void RestartAudioComponents()
     {
         if(fireflyAudio==null)
             fireflyAudio=GameObject.Find("Audio-Firefly").GetComponent<AudioSourcePrefab>();
@@ -34,31 +38,16 @@ public class PlayerButt : MonoBehaviour
     {
         bugs.Add(bug);
 
-        AddBug(bug.name);
-    }
-
-    public void LoseBug(GameObject bug)
-    {
-        bugs.Remove(bug);
-
-        SubBug(bug.name);
-    }
-
-    private void AddBug(string bugName)
-    {
         bool increase = true;
 
-        switch(bugName)
+        switch(bug.name)
         {
             case "Firefly":
             {
                 fireflys++;
                 totalFireflys++;
-
                 fireflyAudio.TrackVolumeControl(increase);
-
                 Score.AddFly();
-
                 break;
             }
 
@@ -66,11 +55,8 @@ public class PlayerButt : MonoBehaviour
             {
                 crickets++;
                 totalCrickets++;
-
                 cricketAudio.TrackVolumeControl(increase);
-                
                 Score.AddCri();
-
                 break;
             }
                 
@@ -78,52 +64,42 @@ public class PlayerButt : MonoBehaviour
             {
                 bees++;
                 totalBees++;
-
                 beeAudio.TrackVolumeControl(increase);
-
                 Score.AddBee();
-
                 break;
             }
         }
     }
 
-    private void SubBug(string bugName)
+    public void LoseBug(GameObject bug)
     {
+        bugs.Remove(bug);
+
         bool increase = true;
 
-        switch(bugName)
+        switch(bug.name)
         {
             case "Firefly":
             {
                 fireflys--;
-
                 fireflyAudio.TrackVolumeControl(!increase);
-
                 Score.SubFly();
-
                 break;
             }
 
             case "Cricket":
             {
                 crickets--;
-
                 cricketAudio.TrackVolumeControl(!increase);
-
                 Score.SubCri();
-
                 break;
             }
                 
             case "Bee":
             {
                 bees--;
-
                 beeAudio.TrackVolumeControl(!increase);
-
                 Score.SubBee();
-
                 break;
             }
         }
@@ -144,43 +120,37 @@ public class PlayerButt : MonoBehaviour
         return proximityThreshold;
     }
 
-    public void BeeShoot()
+    public void UseBee()
     {
         if(bees>0)
         {
             int i = bugs.FindIndex(GameObject => GameObject.name == "Bee");
-            bugs[i].GetComponent<PowerUp>().BugEffect();
+            bugs[i].GetComponent<Bug>().Effect();
             LoseBug(bugs[i]);
         }
     }
 
-    public void CricketBoost()
+    public void UseCricket()
     {
         if(crickets>0)
         {
             int i = bugs.FindIndex(GameObject => GameObject.name == "Cricket");
-            bugs[i].GetComponent<PowerUp>().BugEffect();
+            bugs[i].GetComponent<Bug>().Effect();
             LoseBug(bugs[i]);
         }
     }
 
-    public bool FireflyLife()
+    public bool UseFirefly()
     {
         if(fireflys>0)
         {
-            Debug.Log("PlayerButt: firefly saved yor life!");
             int i = bugs.FindIndex(GameObject => GameObject.name == "Firefly");
-            bugs[i].GetComponent<PowerUp>().BugEffect();
+            bugs[i].GetComponent<Bug>().Effect();
             LoseBug(bugs[i]);
 
             return true;
         }
         else
             return false;
-    }
-
-    public void AglomerateBugs(GameObject bug)
-    {
-        //bug.GetComponent<PowerUp>().
     }
 }

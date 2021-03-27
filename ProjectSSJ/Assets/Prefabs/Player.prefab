@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2199482583269852401}
   - component: {fileID: 3942966278381451565}
-  - component: {fileID: 1136920509506325189}
+  - component: {fileID: -550177925062326875}
   - component: {fileID: 2199482583269852403}
   m_Layer: 0
   m_Name: Player
@@ -176,7 +176,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.04, y: 0.43}
   m_Size: {x: 0.35, y: 2.27}
   m_Direction: 0
---- !u!50 &1136920509506325189
+--- !u!50 &-550177925062326875
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -190,8 +190,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -212,18 +212,14 @@ MonoBehaviour:
   canvasControler: {fileID: 0}
   audioManager: {fileID: 0}
   fireflyEffect: {fileID: 8300000, guid: aa153ce7a9f1a8f4f8f38426c210a64a, type: 3}
-  rigBody: {fileID: 1136920509506325189}
-  moveSpeedX: 8
-  moveSpeedY: 1050
-  verticalSpeedLimit: 14
-  FloorRigBody: {fileID: 0}
-  floor: {fileID: 0}
-  roof: {fileID: 0}
   playerButt: {fileID: 1617362653980311353}
   shieldSprite: {fileID: 6982729164997789066}
+  moveSpeedX: 8
+  moveSpeedY: 8
+  fallSpeed: 2
   invensibilityTime: 2
   lifePoints: 1
-  shieldDamageFrames: 5
+  shieldDamageFrames: 0
 --- !u!1 &2367618938170504393
 GameObject:
   m_ObjectHideFlags: 0

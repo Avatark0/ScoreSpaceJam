@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUpParent : MonoBehaviour
+public class BugParent : MonoBehaviour
 {
     [SerializeField] private GameObject[] powerUpPrefabs = default;
     [SerializeField] private GameObject floor = default;
@@ -21,11 +21,11 @@ public class PowerUpParent : MonoBehaviour
     void Update()
     {
         if (GlobalSpawner.IsTimeForBug()) {
-            GeneratePowerUp();
+            GenerateBug();
         }
     }
 
-    private void GeneratePowerUp()
+    private void GenerateBug()
     {
         float[] rands = GlobalSpawner.NextBug();
         float posX = (limitRight-limitLeft)*rands[0] + limitLeft;
@@ -43,7 +43,7 @@ public class PowerUpParent : MonoBehaviour
         }
 
         GameObject powerUp = Instantiate(powerUpPrefabs[i], pos, Quaternion.identity, transform);
-        powerUp.GetComponent<PowerUp>().SetPlayerObj(playerButt);
+        powerUp.GetComponent<Bug>().SetPlayerObj(playerButt);
 
         switch(i)
         {
