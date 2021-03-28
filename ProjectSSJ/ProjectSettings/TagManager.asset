@@ -14,7 +14,6 @@ TagManager:
   - Bullet
   - Roof
   - Floor
-  - Repositioner
   layers:
   - Default
   - TransparentFX

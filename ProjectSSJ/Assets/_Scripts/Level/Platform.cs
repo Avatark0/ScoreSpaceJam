@@ -14,15 +14,12 @@ public class Platform : MonoBehaviour
         transform.position = pos;
     }
 
-    private void OnCollisionEnter2D(Collision2D other) 
+    private void OnCollisionStay2D(Collision2D other) 
     {
         if(other.gameObject.tag == "Player")
         {
             if(other.gameObject.GetComponent<Player>().shieldDamageFrames)
             {
-                Damage();
-                Damage();
-                Damage();
                 Damage();
             }
         }    

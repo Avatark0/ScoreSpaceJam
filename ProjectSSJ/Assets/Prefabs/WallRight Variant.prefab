@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5280591090421936692, guid: 7c70969c744d79f49aec16d2813fa559, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.84
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5280591090421936692, guid: 7c70969c744d79f49aec16d2813fa559, type: 3}
       propertyPath: m_LocalPosition.z
@@ -60,6 +60,10 @@ PrefabInstance:
       value: Scenary
       objectReference: {fileID: 0}
     - target: {fileID: 8698851827323135077, guid: 7c70969c744d79f49aec16d2813fa559, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 533daa202a87c5e4c9c895e3aa73bd75, type: 3}
+    - target: {fileID: 9139045273513841198, guid: 7c70969c744d79f49aec16d2813fa559, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 533daa202a87c5e4c9c895e3aa73bd75, type: 3}

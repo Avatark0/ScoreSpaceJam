@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Background : MonoBehaviour
+public class BackgroundScroller : MonoBehaviour
 {
-    [Header("GameObject prefab")]
+    [Header("GameObject prefabs")]
     [SerializeField] private GameObject backgroundPrefab = default;
-    [SerializeField] private GameObject floor = default;
-
+    [Header("Adjustments")]
     [SerializeField] private float backgroundOffset = default;
     [SerializeField] private float screenOffset = default;
-
+    [Header("Instances")]
     [SerializeField] private GameObject background_older;
     [SerializeField] private GameObject background_newer;
 
     private void Update()
     {
-        if(floor.transform.position.y - background_older.transform.position.y > backgroundOffset - screenOffset)
+        if(background_older.transform.position.y <= backgroundOffset - screenOffset)
         {
             GenerateWalls();
         }
@@ -24,7 +23,7 @@ public class Background : MonoBehaviour
 
     private void GenerateWalls()
     {
-        float posY = background_newer.transform.position.y + backgroundOffset;
+        float posY = background_newer.transform.position.y - backgroundOffset;
         Vector3 pos = new Vector3(0, posY, 0);
 
         GameObject background_toDestroy = background_older;

@@ -6,7 +6,7 @@ public class Bee : Bug
 {
     public override void Effect()
     {
-        //playerButt.GetComponent<PlayerButt>().DecreaseProximityThreshold();
+        playerButt.GetComponent<PlayerButt>().DecreaseProximityThreshold();
 
         myState = State.skill;
 

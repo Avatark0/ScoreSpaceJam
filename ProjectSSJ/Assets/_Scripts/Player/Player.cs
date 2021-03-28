@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Managers")]
+    [Header("Managers (Set in Hierarchy)")]
     [SerializeField] private CanvasControler canvasControler = default;
     [SerializeField] private AudioManager audioManager = default;
     [Header("Player Parts")]
@@ -13,16 +13,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeedY = default;
     [SerializeField] private float fallSpeed = default;
     [SerializeField] private float invensibilityTime = default;
+    [SerializeField] private float damageSpeedBoost = default;
+    [Header("Player Stats")]
     [SerializeField] private int lifePoints = 1;
-
     [SerializeField] public bool invensibilityFrames = false;
     [SerializeField] public bool shieldDamageFrames = false;
-
-    [SerializeField] public float invensibilityTimeControl;
+    [SerializeField] public float invensibilityTimeCounter;
 
     private void Start()
     {
-        invensibilityTimeControl = invensibilityTime;
+        ResetVariableValues();
     }
 
     void Update()
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         {
             Movement();
             Shoot();
-            Boost();
+            Shield();
 
             InvensibilityTimeControl();
         }
@@ -55,25 +55,25 @@ public class Player : MonoBehaviour
 
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            pos.y+=moveSpeedY*Time.deltaTime;
+            pos.y += moveSpeedY * Time.deltaTime;
 
             wings.pitch += 0.01f;
         }
         if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            pos.y-=moveSpeedY*Time.deltaTime;
+            pos.y -= moveSpeedY * Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            pos.x-=moveSpeedX*Time.deltaTime;
+            pos.x -= moveSpeedX * Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            pos.x+=moveSpeedX*Time.deltaTime;
+            pos.x += moveSpeedX * Time.deltaTime;
         }
 
-        pos.y-=fallSpeed*Time.deltaTime;
-        transform.position=pos;
+        pos.y -= fallSpeed * Time.deltaTime;
+        transform.position = pos;
     }
 
     private void Shoot()
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Boost()
+    private void Shield()
     {
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -97,18 +97,17 @@ public class Player : MonoBehaviour
     {
         if(invensibilityFrames)
         {
-            invensibilityTimeControl = invensibilityTimeControl - invensibilityTime*Time.deltaTime;
-
-            Debug.Log("invensibilityTimeControl = "+invensibilityTimeControl);
+            invensibilityTimeCounter -= invensibilityTime * Time.deltaTime;
 
             Vector3 pos = transform.position;
-            pos.y+=moveSpeedY*Time.deltaTime;
-            transform.position=pos;
+            pos.y += damageSpeedBoost * Time.deltaTime;
+            transform.position = pos;
 
-            if(invensibilityTimeControl < 0.1f)
-                Debug.Log("invensibilityFrames = "+invensibilityFrames);
+            if(invensibilityTimeCounter <= 0)
+            {
                 invensibilityFrames = false;
-                invensibilityTimeControl = invensibilityTime;
+                invensibilityTimeCounter = invensibilityTime;
+            }
         }
     }
 
@@ -116,15 +115,12 @@ public class Player : MonoBehaviour
     {
         if(!invensibilityFrames)
         {
-            if(playerButt.GetComponent<PlayerButt>().UseFirefly())
+            invensibilityFrames = true;
+
+            if(!playerButt.GetComponent<PlayerButt>().UseFirefly())
             {
-                invensibilityFrames = true;
-            }
-            else
-            {
-                Debug.Log("InvensibilityFrames = "+invensibilityFrames);
-                Debug.Log("invensibilityTimeControl = "+invensibilityTimeControl);
                 lifePoints--;
+
                 if(lifePoints<=0)
                 {
                     Destroy(gameObject);
@@ -136,12 +132,17 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         audioManager=GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        
         if(audioManager != null)
             audioManager.ResetChildrenValues();
 
+        canvasControler.GameOver();
+    }
+
+    private void ResetVariableValues()
+    {
+        invensibilityTimeCounter = invensibilityTime;
         invensibilityFrames = false;
         shieldDamageFrames = false;
-
-        canvasControler.GameOver();
     }
 }

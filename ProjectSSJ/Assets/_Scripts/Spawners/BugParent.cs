@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class BugParent : MonoBehaviour
 {
-    [SerializeField] private GameObject[] powerUpPrefabs = default;
+    [SerializeField] private GameObject[] bugPrefabs = default;
+    [Header("Fetch in Hierarchy")]
     [SerializeField] private GameObject floor = default;
     [SerializeField] private GameObject playerButt = default;
-
+    [Header("Controls")]
     [SerializeField] private float limitLeft = default;
     [SerializeField] private float limitRight = default;
-
-    //[SerializeField] private float powerUpOffset = default;
     [SerializeField] private float roofOffset = default;
-
+    [Header("Spawn rates")]
     [SerializeField, Range(0.1f,100f)] private float portion_firefly = 10f;
     [SerializeField, Range(0.1f,100f)] private float portion_cricket = 30f;
     [SerializeField, Range(0.1f,100f)] private float portion_bee = 100f;
@@ -42,19 +41,19 @@ public class BugParent : MonoBehaviour
             i = 2; // bee
         }
 
-        GameObject powerUp = Instantiate(powerUpPrefabs[i], pos, Quaternion.identity, transform);
-        powerUp.GetComponent<Bug>().SetPlayerObj(playerButt);
+        GameObject bug = Instantiate(bugPrefabs[i], pos, Quaternion.identity, transform);
+        bug.GetComponent<Bug>().SetPlayerObj(playerButt);
 
         switch(i)
         {
             case 0:
-                powerUp.name = "Firefly";
+                bug.name = "Firefly";
                 break;
             case 1:
-                powerUp.name = "Cricket";
+                bug.name = "Cricket";
                 break;
             case 2:
-                powerUp.name = "Bee";
+                bug.name = "Bee";
                 break;
         }
     }

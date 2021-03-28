@@ -6,8 +6,7 @@ public class firefly : Bug
 {
     public override void Effect()
     {
-        Debug.Log("firefly effect!");
-        //playerButt.GetComponent<PlayerButt>().DecreaseProximityThreshold();
+        playerButt.GetComponent<PlayerButt>().DecreaseProximityThreshold();
 
         GetComponentInChildren<BugSoundEffects>().SkillSound();
 

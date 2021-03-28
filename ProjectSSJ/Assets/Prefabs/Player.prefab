@@ -211,15 +211,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasControler: {fileID: 0}
   audioManager: {fileID: 0}
-  fireflyEffect: {fileID: 8300000, guid: aa153ce7a9f1a8f4f8f38426c210a64a, type: 3}
   playerButt: {fileID: 1617362653980311353}
   shieldSprite: {fileID: 6982729164997789066}
   moveSpeedX: 8
   moveSpeedY: 8
   fallSpeed: 2
   invensibilityTime: 2
+  damageSpeedBoost: 16
   lifePoints: 1
+  invensibilityFrames: 0
   shieldDamageFrames: 0
+  invensibilityTimeCounter: 0
 --- !u!1 &2367618938170504393
 GameObject:
   m_ObjectHideFlags: 0

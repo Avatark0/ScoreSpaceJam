@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffd504067c862e4ab82fbfce86c2bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpPrefabs:
+  bugPrefabs:
   - {fileID: 505960407752374225, guid: 8b38d8e266fb47649be0495010b51542, type: 3}
   - {fileID: 2295705342015401720, guid: bfb9026a1518d8f45ac63d6405df16a9, type: 3}
   - {fileID: 7036986559340482664, guid: 8d9f2277d0dd1404daebdd5c07b4396e, type: 3}
@@ -1502,9 +1502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundPrefab: {fileID: 71586992984661394, guid: 0b69c5bdda43fdb43903f0e23d0884fa, type: 3}
-  floor: {fileID: 319933260}
-  backgroundOffset: 80.6
-  screenOffset: 6
+  backgroundOffset: -80.6
+  screenOffset: 0
   background_older: {fileID: 1925613471}
   background_newer: {fileID: 1885342783}
 --- !u!1 &664886470
@@ -7473,6 +7472,112 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &971065122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 971065123}
+  - component: {fileID: 971065126}
+  - component: {fileID: 971065125}
+  - component: {fileID: 971065124}
+  m_Layer: 0
+  m_Name: Colliders
+  m_TagString: Scenary
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &971065123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971065122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1592852582}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &971065124
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971065122}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &971065125
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971065122}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 8, y: 7}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 44}
+  m_EdgeRadius: 0
+--- !u!61 &971065126
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971065122}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -8, y: 7}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 44}
+  m_EdgeRadius: 0
 --- !u!1 &1016564891
 GameObject:
   m_ObjectHideFlags: 0
@@ -8516,7 +8621,7 @@ GameObject:
   - component: {fileID: 1592852582}
   - component: {fileID: 1592852583}
   m_Layer: 0
-  m_Name: WallParent
+  m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8535,6 +8640,7 @@ Transform:
   m_Children:
   - {fileID: 1860365434}
   - {fileID: 815054161}
+  - {fileID: 971065123}
   m_Father: {fileID: 404615996}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8551,9 +8657,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPairPrefab: {fileID: 3203953958954607241, guid: 75a55e6e668a2f64eb589ce0b77cb2f0, type: 3}
-  floor: {fileID: 319933260}
-  wallOffset: 57.6
-  cameraOffset: 6
+  wallOffset: -57.6
+  cameraOffset: 0
   wallPair_older: {fileID: 1860365435}
   wallPair_newer: {fileID: 815054162}
 --- !u!1 &1619811804
@@ -8795,8 +8900,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 4647322450691954920, guid: 658486ca8e3b43e439d51ebb074b3aeb, type: 3}
   floor: {fileID: 319933260}
-  limitLeft: -5
-  limitRight: 5
+  limitLeft: -7
+  limitRight: 7
   roofOffset: 27
 --- !u!4 &1804752189
 Transform:

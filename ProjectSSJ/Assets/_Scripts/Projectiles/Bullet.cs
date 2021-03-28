@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    //[SerializeField] private AudioClip hitSound = default;
     [SerializeField] private float speed = 12f;
     
     private void Start()
@@ -12,7 +11,7 @@ public class Bullet : MonoBehaviour
         GameObject bulletParent;
         bulletParent = GameObject.FindWithTag("BulletParent");
         transform.SetParent(bulletParent.transform);
-        GetComponent<CapsuleCollider2D>().isTrigger=true;
+        GetComponent<CapsuleCollider2D>().isTrigger = true;
     }
 
     private void Update()
@@ -24,27 +23,23 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log(other.gameObject.name);
         string tag = other.gameObject.tag;
-        if(tag != "Player" && tag!="PlayerButt" && tag!="Bullet")
+        if(tag != "Player" && tag != "PlayerButt" && tag != "Bullet")
+        {
+            if(other.gameObject.tag == "Platform")
             {
-                if(other.gameObject.tag=="Platform")
-                {
-                    other.gameObject.GetComponent<Platform>().Damage();
-                    GetComponent<Bug>().Death();
+                other.gameObject.GetComponent<Platform>().Damage();
+                GetComponent<Bug>().Death();
 
-                }
-                else if(other.gameObject.tag=="Bug")
-                {
-                    other.gameObject.GetComponent<Bug>().AttachToPlayerButt();
-                }
-                else if(other.gameObject.tag=="AcidDrop")
-                {
-                    other.gameObject.GetComponent<AcidDrop>().Death();
-                }
-
-                //AudioSource.PlayClipAtPoint(hitSound, transform.position);
-                //Destroy(gameObject);
+            }
+            else if(other.gameObject.tag == "Bug")
+            {
+                other.gameObject.GetComponent<Bug>().AttachToPlayerButt();
+            }
+            else if(other.gameObject.tag == "AcidDrop")
+            {
+                other.gameObject.GetComponent<AcidDrop>().Death();
+            }
         }
     }
 }
