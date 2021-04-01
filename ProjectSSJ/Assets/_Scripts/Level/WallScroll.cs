@@ -19,6 +19,8 @@ public class WallScroll : MonoBehaviour
         {
             GenerateWalls();
         }
+
+        MoveWalls();
     }
 
     private void GenerateWalls()
@@ -32,5 +34,16 @@ public class WallScroll : MonoBehaviour
         wallPair_newer = Instantiate(wallPairPrefab, pos, Quaternion.identity, transform);
 
         Destroy(wallPair_toDestroy);
+    }
+
+    void MoveWalls()
+    {
+        Vector3 pos = wallPair_newer.transform.position;
+        pos.y -= ScrollController.GetScrollSpeed() * Time.deltaTime;
+        wallPair_newer.transform.position = pos;
+
+        pos = wallPair_older.transform.position;
+        pos.y -= ScrollController.GetScrollSpeed() * Time.deltaTime;
+        wallPair_older.transform.position = pos;      
     }
 }

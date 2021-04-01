@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4647322450691954923}
   - component: {fileID: 6815297936157834336}
-  - component: {fileID: 6539294216975600207}
   - component: {fileID: 6396014447287732106}
+  - component: {fileID: 4672930259298966903}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -50,27 +50,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.06}
   m_Size: {x: 2.67, y: 0.83}
   m_Direction: 1
---- !u!50 &6539294216975600207
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4647322450691954920}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &6396014447287732106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +67,27 @@ MonoBehaviour:
   - {fileID: 2883932704772814493, guid: f03c16e280f366840938d86a935a70e8, type: 3}
   - {fileID: -4332509096973767090, guid: f03c16e280f366840938d86a935a70e8, type: 3}
   - {fileID: -3314860353112904766, guid: f03c16e280f366840938d86a935a70e8, type: 3}
+--- !u!50 &4672930259298966903
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647322450691954920}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000000
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &5958015321616059109
 GameObject:
   m_ObjectHideFlags: 0

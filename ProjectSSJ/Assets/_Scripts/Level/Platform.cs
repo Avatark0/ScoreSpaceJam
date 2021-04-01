@@ -10,19 +10,8 @@ public class Platform : MonoBehaviour
     private void Update()
     {
         Vector2 pos = transform.position;
-        pos.y -= ScrollController.scrollSpeed * Time.deltaTime;
+        pos.y -= ScrollController.GetScrollSpeed() * Time.deltaTime;
         transform.position = pos;
-    }
-
-    private void OnCollisionStay2D(Collision2D other) 
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            if(other.gameObject.GetComponent<Player>().shieldDamageFrames)
-            {
-                Damage();
-            }
-        }    
     }
 
     public void Damage()
@@ -35,6 +24,13 @@ public class Platform : MonoBehaviour
         else if(life==0)
         {
             GetComponentInChildren<SpriteRenderer>().sprite=damageStates[0];
+            
+            for(int i = 0; i < transform.childCount; i++)
+            {
+                if(transform.GetChild(i).gameObject.tag == "Bug")
+                    transform.GetChild(i).GetComponent<Bug>().AttachToPlayerButt();
+            }
+            
             Destroy(gameObject);
         }
     }

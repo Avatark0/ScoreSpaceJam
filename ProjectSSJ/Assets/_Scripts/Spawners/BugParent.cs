@@ -19,7 +19,8 @@ public class BugParent : MonoBehaviour
 
     void Update()
     {
-        if (GlobalSpawner.IsTimeForBug()) {
+        if (GlobalSpawner.IsTimeForBug()) 
+        {
             GenerateBug();
         }
     }

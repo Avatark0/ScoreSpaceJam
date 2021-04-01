@@ -11,7 +11,6 @@ public class Bee : Bug
         myState = State.skill;
 
         gameObject.tag = "Bullet";
-        Debug.Log("Bee effect");
 
         myRB.simulated=true;
 

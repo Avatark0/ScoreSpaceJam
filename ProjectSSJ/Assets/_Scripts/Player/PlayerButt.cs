@@ -82,7 +82,8 @@ public class PlayerButt : MonoBehaviour
             case "Firefly":
             {
                 fireflys--;
-                fireflyAudio.TrackVolumeControl(!increase);
+                if(fireflys <= 28)
+                    fireflyAudio.TrackVolumeControl(!increase);
                 Score.SubFly();
                 break;
             }
@@ -90,7 +91,8 @@ public class PlayerButt : MonoBehaviour
             case "Cricket":
             {
                 crickets--;
-                cricketAudio.TrackVolumeControl(!increase);
+                if(crickets <= 28)
+                    cricketAudio.TrackVolumeControl(!increase);
                 Score.SubCri();
                 break;
             }
@@ -98,7 +100,8 @@ public class PlayerButt : MonoBehaviour
             case "Bee":
             {
                 bees--;
-                beeAudio.TrackVolumeControl(!increase);
+                if(bees <= 28)
+                    beeAudio.TrackVolumeControl(!increase);
                 Score.SubBee();
                 break;
             }

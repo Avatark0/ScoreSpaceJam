@@ -4,16 +4,19 @@ using UnityEngine;
 
 public abstract class Bug : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] protected GameObject acidBubble;
     [SerializeField] protected Rigidbody2D myRB = default;
-    [SerializeField] protected float speedY = 5f;
+    [Header("Controls")]
+    [SerializeField] protected float fall_speed = default;
     [SerializeField] protected State myState;
-
-    [Header("Object set during play")]
+    [Header("Instances")]
     [SerializeField] protected GameObject playerButt = default;
 
     protected enum State
     {
-        falling, 
+        falling,
+        stoped,
         merging,
         inButt,
         skill
@@ -46,13 +49,18 @@ public abstract class Bug : MonoBehaviour
         {
             other.gameObject.GetComponent<Bug>().AttachToPlayerButt();
         }
+        else if(other.gameObject.tag == "Platform")
+        {
+            myState = State.stoped;
+            transform.parent = other.gameObject.transform;
+        }
     }
 
     public void AttachToPlayerButt()
     {
         myState = State.merging;
         
-        //Destroy(myRB);
+        acidBubble.SetActive(false);
         myRB.simulated=false;
         
         transform.parent = playerButt.transform;
@@ -82,8 +90,10 @@ public abstract class Bug : MonoBehaviour
         if(myState == State.falling)
         {
             Vector3 pos = transform.position;
-            pos.y-=speedY*Time.deltaTime;
+            pos.y -= (fall_speed + ScrollController.GetScrollSpeed()) * Time.deltaTime;
             transform.position=pos;
+
+            transform.Rotate(0, 0, 60*Time.deltaTime, Space.Self);
         }
         else if(myState == State.merging)
         {

@@ -29,8 +29,10 @@ public class Bullet : MonoBehaviour
             if(other.gameObject.tag == "Platform")
             {
                 other.gameObject.GetComponent<Platform>().Damage();
-                GetComponent<Bug>().Death();
+                other.gameObject.GetComponent<Platform>().Damage();
+                other.gameObject.GetComponent<Platform>().Damage();
 
+                GetComponent<Bug>().Death();
             }
             else if(other.gameObject.tag == "Bug")
             {

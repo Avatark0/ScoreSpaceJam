@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioSourcePrefab : MonoBehaviour
 {
-    [SerializeField] private float increment = default;
-
     private AudioSource audioSource;
     
     private void OnEnable() 
@@ -20,19 +18,53 @@ public class AudioSourcePrefab : MonoBehaviour
             audioSource=GetComponent<AudioSource>();
 
         if(gameObject.name == "Audio-Main")
-            audioSource.volume = 1;
+            audioSource.volume = 0.8f;
         else
             audioSource.volume = 0;
     }
 
     public void TrackVolumeControl(bool increase)
     {
+        int increment;
+
         if(audioSource==null)
             audioSource=GetComponent<AudioSource>();
         
         if(increase)
-            audioSource.volume+=increment;
+        {
+            if(audioSource.volume < 0.25f)
+            {
+                increment = 25;
+                audioSource.volume += increment/100f;
+            }
+            else if(audioSource.volume < 0.81f)
+            {
+                increment = 8;
+                audioSource.volume += increment/100f;
+            }
+            else if(audioSource.volume < 1)
+            {
+                increment = 1;
+                audioSource.volume += increment/100f;
+            }
+        }
         else
-            audioSource.volume-=increment;
+        {
+            if(audioSource.volume > 0.81f)
+            {
+                increment = 1;
+                audioSource.volume -= increment/100f;
+            }
+            else if(audioSource.volume > 0.25f)
+            {
+                increment = 8;
+                audioSource.volume -= increment/100f;
+            }
+            else if(audioSource.volume > 0)
+            {
+                increment = 25;
+                audioSource.volume -= increment/100f;
+            }            
+        }
     }
 }

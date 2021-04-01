@@ -38,7 +38,7 @@ public static class GlobalSpawner {
         platform_spawns = new Event[10000];
         drop_spawns = new Event[10000];
         random = new System.Random(43);
-        float time =0;
+        float time = 5;
         for(int i=0; i< bug_spawns.Length; i++) {
             // Bugs are separated by between 0 and 3 seconds.
             float delta = (float)random.NextDouble()*(bug_spawn_max_seconds - bug_spawn_min_seconds) + bug_spawn_min_seconds;

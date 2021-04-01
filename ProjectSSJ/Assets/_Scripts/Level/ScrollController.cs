@@ -4,5 +4,15 @@ using UnityEngine;
 
 public class ScrollController : ScriptableObject
 {
-    public static float scrollSpeed = 4f;
+    private static float scrollSpeed = 4f;
+
+    public static float GetScrollSpeed()
+    {
+        return scrollSpeed;
+    }
+
+    public static void SetScrollSpeed(float newSpeed)
+    {
+        scrollSpeed = newSpeed;
+    }
 }
