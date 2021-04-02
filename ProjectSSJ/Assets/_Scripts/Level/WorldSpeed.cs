@@ -6,6 +6,7 @@ public class WorldSpeed : MonoBehaviour
 {
     [Header("Screen Scroll Stats")]
     [SerializeField] private float worldSpeed = default;
+    [SerializeField] private float maxWorldSpeed = default;
     [SerializeField] private float timestep_to_increase_difficuty = default;
 
     private float timer;
@@ -19,15 +20,18 @@ public class WorldSpeed : MonoBehaviour
     {
         ScrollController.SetScrollSpeed(worldSpeed);
         
-        if( Time.time - timer > timestep_to_increase_difficuty)
+        if(worldSpeed < maxWorldSpeed)
         {
-            worldSpeed += 1;
-            timer = Time.time;
-        }
+            if( Time.time - timer > timestep_to_increase_difficuty)
+            {
+                worldSpeed += 1;
+                timer = Time.time;
+            }
 
-        if(worldSpeed > 25)
-            timestep_to_increase_difficuty = 5;
-        else if(worldSpeed > 10)
-            timestep_to_increase_difficuty = 10;
+            if(worldSpeed > 25)
+                timestep_to_increase_difficuty = 5;
+            else if(worldSpeed > 10)
+                timestep_to_increase_difficuty = 10;
+        }
     }
 }

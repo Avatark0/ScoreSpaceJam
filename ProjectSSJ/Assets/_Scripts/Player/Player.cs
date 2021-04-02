@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     [Header("Player Stats")]
     [SerializeField] private int lifePoints = 1;
     [SerializeField] public bool invensibilityFrames = false;
-    [SerializeField] public bool shieldDamageFrames = false;
+    [SerializeField] public bool cricket_boost_frames = false;
     [SerializeField] public float invensibilityTimeCounter;
 
     private void Start()
@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
         {
             playerButt.GetComponent<PlayerButt>().UseCricket();
             shieldSprite.SetActive(true);
+            shieldSprite.GetComponent<ShieldSprite>().ResetBoostTime();
         }
     }
 
@@ -108,6 +109,20 @@ public class Player : MonoBehaviour
                 invensibilityFrames = false;
                 invensibilityTimeCounter = invensibilityTime;
             }
+        }
+    }
+
+    public void CricketBoostControl()
+    {
+        if(cricket_boost_frames)
+        {
+            moveSpeedX *= 2;
+            moveSpeedY *= 2;
+        }
+        else
+        {
+            moveSpeedX /= 2;
+            moveSpeedY /= 2;
         }
     }
 
@@ -143,6 +158,6 @@ public class Player : MonoBehaviour
     {
         invensibilityTimeCounter = invensibilityTime;
         invensibilityFrames = false;
-        shieldDamageFrames = false;
+        cricket_boost_frames = false;
     }
 }

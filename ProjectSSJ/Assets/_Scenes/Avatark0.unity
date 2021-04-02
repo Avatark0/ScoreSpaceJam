@@ -940,6 +940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldSpeed: 4
+  maxWorldSpeed: 40
   timestep_to_increase_difficuty: 20
 --- !u!4 &330498812
 Transform:
@@ -8969,8 +8970,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 4647322450691954920, guid: 658486ca8e3b43e439d51ebb074b3aeb, type: 3}
   floor: {fileID: 319933260}
-  limitLeft: -7
-  limitRight: 7
+  limitLeft: -6
+  limitRight: 6
   roofOffset: 27
 --- !u!4 &1804752189
 Transform:
