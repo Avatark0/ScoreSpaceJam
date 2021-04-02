@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         {
             Movement();
             Shoot();
-            Shield();
+            Boost();
 
             InvensibilityTimeControl();
         }
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Shield()
+    private void Boost()
     {
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {

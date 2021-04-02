@@ -423,6 +423,22 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1865108606123097739, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+      propertyPath: m_Size.x
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865108606123097739, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+      propertyPath: m_Size.y
+      value: 3.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865108606123097739, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865108606123097739, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.23
+      objectReference: {fileID: 0}
     - target: {fileID: 2199482583269852401, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -502,6 +518,10 @@ PrefabInstance:
     - target: {fileID: 2956146029675817635, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
       propertyPath: m_TagString
       value: BugAmalgamation
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942966278381451565, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4416731625413979365, guid: df9ad0f3fb55adf42bcd63134f54b5eb, type: 3}
       propertyPath: m_Radius
