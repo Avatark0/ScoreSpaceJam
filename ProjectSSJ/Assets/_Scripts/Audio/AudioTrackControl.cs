@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioSourcePrefab : MonoBehaviour
+public class AudioTrackControl : MonoBehaviour
 {
     private AudioSource audioSource;
     
@@ -17,7 +17,7 @@ public class AudioSourcePrefab : MonoBehaviour
         if(audioSource==null)
             audioSource=GetComponent<AudioSource>();
 
-        if(gameObject.name == "Audio-Main")
+        if(gameObject.name == "AudioTrack-Main")
             audioSource.volume = 0.8f;
         else
             audioSource.volume = 0;

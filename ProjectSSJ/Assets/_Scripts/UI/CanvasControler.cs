@@ -21,7 +21,7 @@ public class CanvasControler : MonoBehaviour
         endMenu.SetActive(false);
         pauseMenu.SetActive(false);
         creditsMenu.SetActive(false);
-        Time.timeScale=0;
+        Time.timeScale = 0;
     }
 
     public void GameStart()
@@ -29,8 +29,8 @@ public class CanvasControler : MonoBehaviour
         startMenu.SetActive(false);
         gameMenu.SetActive(true);
         endMenu.SetActive(false);
-        Time.timeScale=1;
-        gameStarted=true;
+        Time.timeScale = 1;
+        gameStarted = true;
     }
 
     public void GameOver()
@@ -38,17 +38,21 @@ public class CanvasControler : MonoBehaviour
         startMenu.SetActive(false);
         gameMenu.SetActive(false);
         endMenu.SetActive(true);
-        Time.timeScale=0;
-        gameStarted=false;
+        Time.timeScale = 0;
+        gameStarted = false;
+        GameOverSound.Play();
     }
 
     public void GameRestart()
     {
+        ResetStaticValues();
+        Score.ResetStaticValues();
+        
+        GlobalSpawner.ReInitLevel();
+
         string _name;
         _name = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(_name);
-        GlobalSpawner.ReInitLevel();
-        Score.ResetStaticValues();
     }
 
     public void Credits()
@@ -66,14 +70,14 @@ public class CanvasControler : MonoBehaviour
             if(!gamePaused)
             {
                 pauseMenu.SetActive(true);
-                Time.timeScale=0;
-                gamePaused=true;
+                Time.timeScale = 0;
+                gamePaused = true;
             }
             else
             {
                 pauseMenu.SetActive(false);
-                Time.timeScale=1;
-                gamePaused=false;
+                Time.timeScale = 1;
+                gamePaused = false;
             }
         }
     }
@@ -81,5 +85,11 @@ public class CanvasControler : MonoBehaviour
     public static bool IsPaused()
     {
         return gamePaused;
+    }
+
+    private void ResetStaticValues()
+    {
+        gameStarted = false;
+        gamePaused = false;
     }
 }

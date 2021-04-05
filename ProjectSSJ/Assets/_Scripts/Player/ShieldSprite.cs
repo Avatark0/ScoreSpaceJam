@@ -10,7 +10,6 @@ public class ShieldSprite : MonoBehaviour
     {
         GetComponentInParent<Player>().cricket_boost_frames=true;
         GetComponentInParent<Player>().CricketBoostControl();
-        Debug.Log("CricketBoost is On");
     }
 
     private void Update()
@@ -25,7 +24,6 @@ public class ShieldSprite : MonoBehaviour
 
             GetComponentInParent<Player>().cricket_boost_frames=false;
             GetComponentInParent<Player>().CricketBoostControl();
-            Debug.Log("CricketBoost is off");
             
             gameObject.SetActive(false);
         } 
@@ -35,7 +33,6 @@ public class ShieldSprite : MonoBehaviour
     {
         Color fading = SpriteRenderer.color;
         fading.a = 1;
-        Debug.Log("CricketBoost time reseted");
         SpriteRenderer.color = fading;
     }
 }

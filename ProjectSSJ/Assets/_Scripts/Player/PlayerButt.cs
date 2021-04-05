@@ -5,14 +5,12 @@ using UnityEngine;
 public class PlayerButt : MonoBehaviour
 {
     [Header("Bugs audio tracks")]
-    [SerializeField] private AudioSourcePrefab fireflyAudio;
-    [SerializeField] private AudioSourcePrefab cricketAudio;
-    [SerializeField] private AudioSourcePrefab beeAudio;
+    [SerializeField] private AudioTrackControl fireflyAudio;
+    [SerializeField] private AudioTrackControl cricketAudio;
+    [SerializeField] private AudioTrackControl beeAudio;
 
     [Header("Attraction distance of caught bugs")]
     [SerializeField] private float proximityThreshold = 1;
-
-    [HideInInspector] public List<GameObject> bugs = new List<GameObject>();
 
     [Header("Current number of each bug caught")]
     public int fireflys;
@@ -24,14 +22,22 @@ public class PlayerButt : MonoBehaviour
     public int totalCrickets;
     public int totalBees;
 
+    [HideInInspector] public List<GameObject> bugs = new List<GameObject>();
+
     public void RestartAudioComponents()
     {
-        if(fireflyAudio==null)
-            fireflyAudio=GameObject.Find("Audio-Firefly").GetComponent<AudioSourcePrefab>();
-        if(cricketAudio==null)
-            cricketAudio=GameObject.Find("Audio-Cricket").GetComponent<AudioSourcePrefab>();
-        if(beeAudio==null)
-            beeAudio=GameObject.Find("Audio-Bee").GetComponent<AudioSourcePrefab>();
+        foreach(GameObject audioTrack in GameObject.FindGameObjectsWithTag("AudioTrack"))
+        {
+            if(audioTrack.name == "AudioTrack-Firefly")
+                if(fireflyAudio == null)
+                    fireflyAudio = audioTrack.GetComponent<AudioTrackControl>();
+            if(audioTrack.name == "AudioTrack-Cricket")
+                if(cricketAudio == null)
+                    cricketAudio = audioTrack.GetComponent<AudioTrackControl>();
+            if(audioTrack.name == "AudioTrack-Bee")
+                if(beeAudio == null)
+                    beeAudio = audioTrack.GetComponent<AudioTrackControl>();
+        } 
     }
 
     public void CatchBug(GameObject bug)
@@ -110,12 +116,12 @@ public class PlayerButt : MonoBehaviour
 
     public void IncreaseProximityThreshold()
     {
-        proximityThreshold += 1 / proximityThreshold;
+        proximityThreshold += 0.8f / proximityThreshold;
     }
 
     public void DecreaseProximityThreshold()
     {
-        proximityThreshold -= 1 / proximityThreshold;
+        proximityThreshold -= 0.8f / proximityThreshold;
     }
 
     public float GetProximityThereshold()

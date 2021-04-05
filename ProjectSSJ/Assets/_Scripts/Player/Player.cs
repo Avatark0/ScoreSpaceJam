@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
     private void Start()
     {
         ResetVariableValues();
+
+        audioManager=GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        if(audioManager != null)
+            audioManager.ResetChildrenValues();
     }
 
     void Update()
@@ -138,20 +142,10 @@ public class Player : MonoBehaviour
 
                 if(lifePoints<=0)
                 {
-                    Destroy(gameObject);
+                    canvasControler.GameOver();
                 }
             }
         }
-    }
-
-    private void OnDestroy()
-    {
-        audioManager=GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
-        
-        if(audioManager != null)
-            audioManager.ResetChildrenValues();
-
-        canvasControler.GameOver();
     }
 
     private void ResetVariableValues()
@@ -159,5 +153,12 @@ public class Player : MonoBehaviour
         invensibilityTimeCounter = invensibilityTime;
         invensibilityFrames = false;
         cricket_boost_frames = false;
+    }
+
+    public void HitByDrop()
+    {
+        Vector3 pos = transform.position;
+        pos.y -= 2;
+        transform.position = pos;
     }
 }

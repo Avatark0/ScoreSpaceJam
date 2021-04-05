@@ -19,7 +19,8 @@ public class AudioManager : MonoBehaviour
     {
         foreach(Transform child in transform)
         {
-            child.GetComponent<AudioSourcePrefab>().ResetValues();
+            if(child.tag == "AudioTrack")
+                child.GetComponent<AudioTrackControl>().ResetValues();
         }
     }
 }
